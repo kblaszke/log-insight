@@ -6,7 +6,7 @@ plugins {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
@@ -20,11 +20,12 @@ dependencies {
     // Project dependency to core
     implementation(project(":log-insight-core"))
 
-    implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.coroutines.core)
 
     // Reactive Spring WebFlux
     implementation(libs.spring.boot.starter.webflux)
+
+    implementation(libs.mcp.kotlin.sdk)
 
     // Jackson Kotlin module for proper value class serialization
     implementation(libs.jackson.module.kotlin)

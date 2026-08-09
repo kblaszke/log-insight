@@ -8,3 +8,6 @@ build/
 *.iws
 *.ipr
 Footer
+/gradle/wrapper/gradle-wrapper.jar
+/gradlew
+/gradlew.bat

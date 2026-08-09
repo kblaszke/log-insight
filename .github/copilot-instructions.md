@@ -7,9 +7,9 @@ This file provides context and strict guidelines for GitHub Copilot when generat
     - `:log-insight-core`: Pure domain logic, parser, and streaming pipeline. No framework dependencies.
     - `:log-insight-app`: Application entry point, CLI, Spring WebFlux, and future Model Context Protocol (MCP) integrations.
 - **Runtimes & Compilation**:
-    - Target JVM: Java 17.
+    - Target JVM: Java 21.
     - Kotlin version: 1.9.22.
-    - All subprojects are configured globally using Java 17 toolchains and Kotlin JVM target 17.
+    - All subprojects are configured globally using Java 21 toolchains and Kotlin JVM target 21.
 
 ## Language & Coding Standards
 - **Language**: Always write identifiers, class/method names, logs, exceptions, and comments in **100% English**.
