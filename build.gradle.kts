@@ -1,5 +1,8 @@
 plugins {
-    alias(libs.plugins.kotlin.jvm) apply false
+    plugins {
+        alias(libs.plugins.kotlinJvm) apply false
+        alias(libs.plugins.spring.boot) apply false
+    }
 }
 
 // Ensure consistent JVM target for Java and Kotlin across subprojects
@@ -12,4 +15,3 @@ subprojects {
         kotlinOptions.jvmTarget = "17"
     }
 }
-

@@ -1,16 +1,22 @@
 plugins {
-    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlinJvm)
 }
 
-// Enforce Java 17 toolchain for compilation and testing compatibility
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions {
+        jvmTarget = libs.versions.javaVersion.get()
+    }
+}
+
 dependencies {
-    implementation(libs.kotlin.coroutines.core) // Dodana zależność do coroutines
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin.coroutines.core)
 
     // Test dependencies
     testImplementation(libs.kotest.runner)
