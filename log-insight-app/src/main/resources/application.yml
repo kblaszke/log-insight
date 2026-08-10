@@ -1,0 +1,6 @@
+spring:
+    application:
+        name: log-insight-app
+    main:
+      banner-mode: off
+      log-startup-info: false
