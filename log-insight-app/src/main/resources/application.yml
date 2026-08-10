@@ -4,3 +4,7 @@ spring:
     main:
       banner-mode: off
       log-startup-info: false
+log-insight:
+  mcp:
+    target-file-path: "logs/app.log"
+

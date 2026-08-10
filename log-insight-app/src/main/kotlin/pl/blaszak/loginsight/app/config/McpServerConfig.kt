@@ -12,26 +12,24 @@ import jakarta.annotation.PreDestroy
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonObject
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import pl.blaszak.loginsight.core.model.LogLevel
-import pl.blaszak.loginsight.core.stream.LogPipeline
+import pl.blaszak.loginsight.app.service.McpLogQueryService
 import java.io.File
 
 @Configuration(proxyBeanMethods = false)
 class McpServerConfig(
-    // Constructor injection of the LogPipeline bean
-    private val logPipeline: LogPipeline
+    private val mcpLogQueryService: McpLogQueryService,
+    // Injecting the path to the real log file from application properties with a fallback
+    @param: Value("\${log-insight.mcp.target-file-path:logs/app.log}")
+    private val targetFilePath: String
 ) {
 
     private val log = LoggerFactory.getLogger(McpServerConfig::class.java)
@@ -51,7 +49,6 @@ class McpServerConfig(
             )
         )
 
-        // Registering the query_logs tool with its input schema wrapped in Tool.Input
         server.addTool(
             name = "query_logs",
             description = "Query and filter log entries by severity level and regex pattern",
@@ -72,65 +69,37 @@ class McpServerConfig(
                 }
             )
         ) { request ->
-            // Accessing arguments directly from request.arguments
             val levelFilter = (request.arguments["level"] as? JsonPrimitive)?.content
             val patternFilter = (request.arguments["pattern"] as? JsonPrimitive)?.content
             val limit = (request.arguments["limit"] as? JsonPrimitive)?.content?.toIntOrNull() ?: 50
 
             log.info("MCP Tool query_logs invoked with level={}, pattern={}, limit={}", levelFilter, patternFilter, limit)
 
-            val logEntries = runBlocking(Dispatchers.IO) {
-                // Creating a demo log file matching the structure parsed by LogPipeline
-                val tempLogFile = File.createTempFile("live-server-logs", ".log").apply {
-                    deleteOnExit()
-                    writeText(
-                        """
-                        [2026-08-08T12:00:00Z] [INFO] Server started
-                        [2026-08-08T12:01:00Z] [DEBUG] Scanning ports
-                        [2026-08-08T12:02:00Z] [WARN] Heavy CPU load
-                        [2026-08-08T12:03:00Z] [ERROR] Service unavailable
-                        """.trimIndent()
-                    )
-                }
-
-                // Streaming the raw file lines and parsing them to LogEntry Flow
-                val rawLinesFlow = pl.blaszak.loginsight.app.FileReader.readFileLines(tempLogFile)
-                var parsedFlow = logPipeline.streamFromLines(rawLinesFlow)
-
-                // Dynamic level filtering
-                if (levelFilter != null) {
-                    val level = runCatching { LogLevel.valueOf(levelFilter.uppercase()) }.getOrNull()
-                    if (level != null) {
-                        parsedFlow = parsedFlow.filter { it.level == level }
-                    }
-                }
-
-                // Dynamic regex or substring pattern filtering
-                if (patternFilter != null) {
-                    val regex = runCatching { Regex(patternFilter, RegexOption.IGNORE_CASE) }.getOrNull()
-                    if (regex != null) {
-                        parsedFlow = parsedFlow.filter { regex.containsMatchIn(it.message.value) }
-                    } else {
-                        parsedFlow = parsedFlow.filter { it.message.value.contains(patternFilter, ignoreCase = true) }
-                    }
-                }
-
-                // Limit results and collect to list
-                parsedFlow.take(limit).toList()
+            // Reference the real, configured log file
+            val logFile = File(targetFilePath)
+            if (!logFile.exists()) {
+                return@addTool CallToolResult(
+                    content = listOf(
+                        TextContent(
+                            text = "Target log file not found at: ${logFile.absolutePath}. Please check server configuration."
+                        )
+                    ),
+                    isError = true
+                )
             }
+
+            // Await the suspending call directly without runBlocking wrapper
+            val logEntries = mcpLogQueryService.queryLogs(logFile, levelFilter, patternFilter, limit)
 
             CallToolResult(
                 content = listOf(
                     TextContent(
-                        text = logEntries.joinToString("\n") { entry ->
-                            "[${entry.timestamp}] ${entry.level}: ${entry.message.value}"
-                        }
+                        text = logEntries.joinToString("\n")
                     )
                 )
             )
         }
 
-        // Initialize stdio connection asynchronously
         log.info("Initializing MCP Server connection via Stdio transport...")
         mcpScope.launch {
             try {
