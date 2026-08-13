@@ -1,8 +1,8 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-    plugins {
         alias(libs.plugins.kotlinJvm) apply false
         alias(libs.plugins.spring.boot) apply false
-    }
 }
 
 // Ensure consistent JVM target for Java and Kotlin across subprojects
@@ -12,6 +12,8 @@ subprojects {
     }
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions.jvmTarget = "21"
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
     }
 }

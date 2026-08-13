@@ -1,0 +1,33 @@
+[2026-08-12T10:00:00Z] [INFO] Starting LogInsight App on JVM 21...
+[2026-08-12T10:00:01Z] [INFO] Active profiles: default
+[2026-08-12T10:00:02Z] [DEBUG] Scanning packages for Spring WebFlux configuration...
+[2026-08-12T10:00:03Z] [DEBUG] Found AppConfig, JacksonConfig, McpServerConfig.
+[2026-08-12T10:00:04Z] [INFO] Registering reactive LogPipeline instance as a Spring Bean.
+[2026-08-12T10:00:05Z] [INFO] Initializing MCP Server connection via Stdio transport...
+[2026-08-12T10:00:05Z] [INFO] MCP Server successfully connected and listening on stdin/stdout.
+[2026-08-12T10:00:06Z] [INFO] Netty started on port(s) 8080 (http)
+[2026-08-12T10:00:06Z] [INFO] Started AppKt in 6.42 seconds (process running for 7.1)
+[2026-08-12T10:01:10Z] [DEBUG] DispatcherHandler mapped GET /api/logs/stream
+[2026-08-12T10:01:12Z] [INFO] SSE connection opened for client session: hand-739fa
+[2026-08-12T10:02:15Z] [DEBUG] FileReader initiating asynchronous cold flow on File: logs/app.log
+[2026-08-12T10:03:22Z] [DEBUG] Parsing raw text line: '[2026-08-12T10:00:00Z] [INFO] Starting LogInsight App...'
+[2026-08-12T10:04:30Z] [WARN] Reactive Netty thread 'reactor-http-nio-2' blocked for 120ms (slow I/O fallback)
+[2026-08-12T10:05:00Z] [INFO] SSE heartbeat signal sent to session: hand-739fa
+[2026-08-12T10:08:15Z] [DEBUG] Cleaning up temporary file: live-server-logs823924.log
+[2026-08-12T10:10:00Z] [WARN] Connection pool database-pool-1 approaching maximum limit (9/10 active connections).
+[2026-08-12T10:11:05Z] [WARN] Database slow query detected: SELECT * FROM logs WHERE severity = 'ERROR' (took 1850ms)
+[2026-08-12T10:12:15Z] [INFO] Connection pool database-pool-1 recovered. Active connections: 2.
+[2026-08-12T10:15:20Z] [INFO] SSE connection closed by client: hand-739fa
+[2026-08-12T10:20:00Z] [INFO] Gateway check: health status UP.
+[2026-08-12T10:22:12Z] [DEBUG] Received JSON-RPC request for tool: list_tools
+[2026-08-12T10:22:12Z] [DEBUG] Sending list_tools response containing 1 registered tool.
+[2026-08-12T10:22:15Z] [INFO] MCP Tool query_logs invoked with level=ERROR, pattern=null, limit=50
+[2026-08-12T10:25:30Z] [ERROR] Failed to dispatch SSE event to client. Connection closed prematurely by host gateway.
+[2026-08-12T10:25:32Z] [INFO] Retrying client handshake for session: retry-02a83
+[2026-08-12T10:25:35Z] [ERROR] Handshake failed: Connection timeout after 3000ms.
+[2026-08-12T10:27:00Z] [INFO] Attempting to reconnect database pool...
+[2026-08-12T10:28:40Z] [DEBUG] Garbage Collector executed: G1 Young Generation (reclaimed 340MB)
+[2026-08-12T10:30:15Z] [ERROR] OutOfMemoryError: Metaspace limit reached. Initiating heap dump.
+[2026-08-12T10:30:18Z] [ERROR] Severe crash occurred. Stopping MCP Stdio transport server thread.
+[2026-08-12T10:30:20Z] [INFO] Shutting down MCP Server Coroutine Scope...
+[2026-08-12T10:30:21Z] [INFO] LogInsight App stopped.

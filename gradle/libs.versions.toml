@@ -1,12 +1,12 @@
 [versions]
-kotlin = "1.9.22"
+kotlin = "2.3.21"
 kotest = "5.8.0"
-coroutines = "1.7.3"
+coroutines = "1.11.0"
 javaVersion = "21"
 springBoot = "3.2.2"
 jackson = "2.16.0"
 springdoc = "2.3.0"
-mcp = "0.1.0"
+mcp = "0.14.0"
 
 [libraries]
 # Kotlin
