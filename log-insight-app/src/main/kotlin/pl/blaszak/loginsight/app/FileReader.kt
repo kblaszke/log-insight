@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.io.File
+import java.io.IOException
 
 object FileReader {
 
@@ -13,6 +14,9 @@ object FileReader {
      * Uses [flowOn] with [Dispatchers.IO] to safely offload blocking I/O operations.
      */
     fun readFileLines(file: File): Flow<String> = flow {
+        if (!file.exists() || !file.isFile) {
+            throw IOException("Target file does not exist or is not a valid file: ${file.absolutePath}")
+        }
         file.bufferedReader().use { reader ->
             var line = reader.readLine()
             while (line != null) {

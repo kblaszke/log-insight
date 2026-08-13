@@ -1,23 +1,17 @@
 package pl.blaszak.loginsight.app.config
 
-import io.modelcontextprotocol.kotlin.sdk.types.ToolSchema // Updated to compliant ToolSchema
+import io.modelcontextprotocol.kotlin.sdk.types.ToolSchema
 import io.modelcontextprotocol.kotlin.sdk.server.Server
 import io.modelcontextprotocol.kotlin.sdk.server.ServerOptions
-import io.modelcontextprotocol.kotlin.sdk.server.StdioServerTransport
 import io.modelcontextprotocol.kotlin.sdk.types.CallToolResult
 import io.modelcontextprotocol.kotlin.sdk.types.Implementation
 import io.modelcontextprotocol.kotlin.sdk.types.ServerCapabilities
 import io.modelcontextprotocol.kotlin.sdk.types.TextContent
 
-import kotlinx.io.asSource
-import kotlinx.io.asSink
-import kotlinx.io.buffered
-
 import jakarta.annotation.PreDestroy
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
@@ -33,7 +27,7 @@ import java.io.File
 class McpServerConfig(
     private val mcpLogQueryService: McpLogQueryService,
     // Use @param:Value to target the constructor parameter explicitly
-    @param:Value("\${log-insight.mcp.target-file-path:logs/app.log}")
+    @param:Value($$"${log-insight.mcp.target-file-path:logs/app.log}")
     private val targetFilePath: String
 ) {
 
@@ -102,23 +96,6 @@ class McpServerConfig(
                     )
                 )
             )
-        }
-
-        // Initialize stdio connection asynchronously
-        log.info("Initializing MCP Server connection via Stdio transport...")
-        mcpScope.launch {
-            try {
-                // 1. Wrap JVM standard streams into kotlinx.io Source and Sink
-                val transport = StdioServerTransport(
-                    System.`in`.asSource().buffered(),
-                    System.out.asSink().buffered()
-                )
-                // 2. In SDK 0.14.0, use createSession instead of connect
-                val session = server.createSession(transport)
-                log.info("MCP Server successfully connected and listening.")
-            } catch (e: Exception) {
-                log.error("Error during MCP Server connection lifecycle", e)
-            }
         }
 
         return server

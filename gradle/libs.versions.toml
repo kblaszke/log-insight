@@ -7,19 +7,20 @@ springBoot = "3.2.2"
 jackson = "2.16.0"
 springdoc = "2.3.0"
 mcp = "0.14.0"
+blockhound = "1.0.8.RELEASE"
 
 [libraries]
 # Kotlin
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 mcp-kotlin-sdk = { module = "io.modelcontextprotocol:kotlin-sdk", version.ref = "mcp" }
+kotest-extensions-blockhound = { module = "io.kotest:kotest-extensions-blockhound-jvm", version.ref = "kotest" }
+blockhound = { module = "io.projectreactor.tools:blockhound", version.ref = "blockhound" }
 
 # Spring Boot WebFlux
 spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux", version.ref = "springBoot" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "springBoot" }
 
 # Jackson
-jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 
 # Testing (Kotest)

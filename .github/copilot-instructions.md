@@ -45,7 +45,7 @@ When configuring or extending the MCP server inside the `:log-insight-app` modul
 - **Action**: Always configure Spring `@Configuration` classes with `proxyBeanMethods = false` to bypass proxying, allowing Kotlin classes and `@Bean` functions to remain safely `final`:
   ```kotlin
   @Configuration(proxyBeanMethods = false)
-  class McpServerConfig { ... }
+  class McpServerConfig {  }
   ```
 
 ### 3. Non-blocking Lifecycle Management

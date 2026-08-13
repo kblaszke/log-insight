@@ -40,6 +40,8 @@ dependencies {
     testImplementation(libs.kotest.runner)
     testImplementation(libs.kotest.assertions)
     testImplementation(libs.kotest.spring.extension)
+    testImplementation(libs.kotest.extensions.blockhound)
+    testImplementation(libs.blockhound)
 }
 
 application {
@@ -48,4 +50,8 @@ application {
 
 tasks.test {
     useJUnitPlatform()
+    jvmArgs(
+        "-XX:+AllowRedefinitionToAddDeleteMethods",
+        "-XX:+EnableDynamicAgentLoading"
+    )
 }

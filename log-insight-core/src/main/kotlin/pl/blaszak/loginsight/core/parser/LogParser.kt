@@ -32,10 +32,5 @@ object LogParser {
             message = LogMessage(messageStr)
         )
     }
-
-    // Lazy streaming processing using Sequences
-    fun parseSequence(lines: Sequence<String>): Sequence<LogEntry> {
-        return lines.mapNotNull { parseLine(it) }
-    }
 }
 

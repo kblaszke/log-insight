@@ -1,8 +1,6 @@
-package pl.blaszak.loginsight.parser
+package pl.blaszak.loginsight.core.stream
 
 import pl.blaszak.loginsight.core.model.LogLevel
-import pl.blaszak.loginsight.core.stream.LogPipeline
-import pl.blaszak.loginsight.core.stream.LogPipeline.filterByLevel
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.asFlow
@@ -22,7 +20,7 @@ class LogPipelineSpec : FunSpec({
         val linesFlow = rawLogs.asFlow()
 
         // When
-        val result = LogPipeline.streamFromLines(linesFlow).toList()
+        val result = LogPipeline().streamFromLines(linesFlow).toList()
 
         // Then
         result.size shouldBe 4
@@ -32,7 +30,7 @@ class LogPipelineSpec : FunSpec({
 
     test("should filter log entries by minimum level") {
         // Given
-        val entriesFlow = LogPipeline.streamFromLines(rawLogs.asFlow())
+        val entriesFlow = LogPipeline().streamFromLines(rawLogs.asFlow())
 
         // When - filter only WARN and ERROR
         val filtered = entriesFlow.filterByLevel(LogLevel.WARN).toList()
@@ -51,10 +49,10 @@ class LogPipelineSpec : FunSpec({
             "[2026-08-06T12:03:00Z] [WARN] Warn A"
         ).asFlow()
 
-        val entriesFlow = LogPipeline.streamFromLines(logsWithDuplicates)
+        val entriesFlow = LogPipeline().streamFromLines(logsWithDuplicates)
 
         // When
-        val stats = LogPipeline.collectStats(entriesFlow)
+        val stats: Map<LogLevel, Long> = LogPipeline().collectStats(entriesFlow)
 
         // Then
         stats[LogLevel.INFO] shouldBe 2L

@@ -8,13 +8,7 @@ import java.time.Instant
  * This DTO is JSON-serializable and decouples the API contract from the domain model.
  */
 data class LogEntryDto(
-    @JsonProperty("timestamp")
-    val timestamp: Instant,
-
-    @JsonProperty("level")
-    val level: String,
-
-    @JsonProperty("message")
-    val message: String
+    @param:JsonProperty("timestamp") val timestamp: Instant,
+    @param:JsonProperty("level") val level: String,
+    @param:JsonProperty("message") val message: String
 )
-

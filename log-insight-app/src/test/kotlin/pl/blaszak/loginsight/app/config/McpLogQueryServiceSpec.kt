@@ -1,7 +1,6 @@
 package pl.blaszak.loginsight.app.config
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.string.shouldContain
 import pl.blaszak.loginsight.app.service.McpLogQueryService
@@ -10,7 +9,7 @@ import java.io.File
 
 class McpLogQueryServiceSpec : FunSpec({
 
-    val logPipeline = LogPipeline
+    val logPipeline = LogPipeline()
     val service = McpLogQueryService(logPipeline)
 
     test("should correctly filter logs by severity level") {

@@ -38,10 +38,10 @@ class McpLogQueryService(
         // Filter by regex or substring pattern if specified
         if (patternFilter != null) {
             val regex = runCatching { Regex(patternFilter, RegexOption.IGNORE_CASE) }.getOrNull()
-            if (regex != null) {
-                parsedFlow = parsedFlow.filter { regex.containsMatchIn(it.message.value) }
+            parsedFlow = if (regex != null) {
+                parsedFlow.filter { regex.containsMatchIn(it.message.value) }
             } else {
-                parsedFlow = parsedFlow.filter { it.message.value.contains(patternFilter, ignoreCase = true) }
+                parsedFlow.filter { it.message.value.contains(patternFilter, ignoreCase = true) }
             }
         }
 

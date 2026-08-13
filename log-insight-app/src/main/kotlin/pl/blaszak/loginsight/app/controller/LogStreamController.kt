@@ -5,7 +5,7 @@ import pl.blaszak.loginsight.app.dto.LogEntryDto
 import pl.blaszak.loginsight.core.model.LogEntry
 import pl.blaszak.loginsight.core.model.LogLevel
 import pl.blaszak.loginsight.core.stream.LogPipeline
-import pl.blaszak.loginsight.core.stream.LogPipeline.filterByLevel
+import pl.blaszak.loginsight.core.stream.filterByLevel // Prawidłowy import funkcji top-level!
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -20,7 +20,6 @@ import java.io.File
 class LogStreamController(
     private val logPipeline: LogPipeline
 ) {
-
     /**
      * Streams log entries asynchronously as Server-Sent Events (SSE).
      * Automatically converts Kotlin [Flow] to reactive stream chunks.
@@ -35,11 +34,10 @@ class LogStreamController(
 
         // For demo purposes, we point to a temporary mock log file on disk
         val tempLogFile = createDemoLogFile()
-
         val rawLinesFlow = FileReader.readFileLines(tempLogFile)
+
         val parsedEntriesFlow = logPipeline.streamFromLines(rawLinesFlow)
 
-        // Filter by level and map to DTO for JSON serialization
         return parsedEntriesFlow.filterByLevel(level)
             .map { entry -> entry.toDto() }
     }
@@ -47,22 +45,21 @@ class LogStreamController(
     /**
      * Extension function to convert LogEntry domain model to LogEntryDto for JSON serialization.
      */
-    private fun LogEntry.toDto(): LogEntryDto =
-        LogEntryDto(
-            timestamp = timestamp,
-            level = level.name,
-            message = message.value
-        )
+    private fun LogEntry.toDto(): LogEntryDto = LogEntryDto(
+        timestamp = timestamp,
+        level = level.name,
+        message = message.value
+    )
 
     private fun createDemoLogFile(): File {
         return File.createTempFile("live-server-logs", ".log").apply {
             deleteOnExit()
             writeText(
                 """
-                    [2026-08-08T12:00:00Z] [INFO] Server started
-                    [2026-08-08T12:01:00Z] [DEBUG] Scanning ports
-                    [2026-08-08T12:02:00Z] [WARN] Heavy CPU load
-                    [2026-08-08T12:03:00Z] [ERROR] Service unavailable
+                [2026-08-08T12:00:00Z] [INFO] Server started
+                [2026-08-08T12:01:00Z] [DEBUG] Scanning ports
+                [2026-08-08T12:02:00Z] [WARN] Heavy CPU load
+                [2026-08-08T12:03:00Z] [ERROR] Service unavailable
                 """.trimIndent()
             )
         }
