@@ -7,7 +7,6 @@ import io.modelcontextprotocol.kotlin.sdk.types.CallToolResult
 import io.modelcontextprotocol.kotlin.sdk.types.Implementation
 import io.modelcontextprotocol.kotlin.sdk.types.ServerCapabilities
 import io.modelcontextprotocol.kotlin.sdk.types.TextContent
-
 import jakarta.annotation.PreDestroy
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,11 +25,8 @@ import java.io.File
 @Configuration(proxyBeanMethods = false)
 class McpServerConfig(
     private val mcpLogQueryService: McpLogQueryService,
-    // Use @param:Value to target the constructor parameter explicitly
-    @param:Value($$"${log-insight.mcp.target-file-path:logs/app.log}")
-    private val targetFilePath: String
+    @param:Value("\${log-insight.mcp.target-file-path:logs/app.log}") private val targetFilePath: String
 ) {
-
     private val log = LoggerFactory.getLogger(McpServerConfig::class.java)
     private val mcpScope = CoroutineScope(Dispatchers.Default)
 
@@ -48,7 +44,7 @@ class McpServerConfig(
             )
         )
 
-        // Using compliant ToolSchema instead of deprecated Tool.Input to prevent silent client drops
+        // Tool 1: Raw querying & filtering
         server.addTool(
             name = "query_logs",
             description = "Query and filter log entries by severity level and regex pattern",
@@ -74,27 +70,77 @@ class McpServerConfig(
             val limit = (request.arguments?.get("limit") as? JsonPrimitive)?.content?.toIntOrNull() ?: 50
 
             log.info("MCP Tool query_logs invoked with level={}, pattern={}, limit={}", levelFilter, patternFilter, limit)
-
             val logFile = File(targetFilePath)
             if (!logFile.exists()) {
                 return@addTool CallToolResult(
                     content = listOf(
-                        TextContent(
-                            text = "Target log file not found at: ${logFile.absolutePath}. Please check server configuration."
-                        )
+                        TextContent(text = "Target log file not found at: ${logFile.absolutePath}.")
                     ),
                     isError = true
                 )
             }
 
             val logEntries = mcpLogQueryService.queryLogs(logFile, levelFilter, patternFilter, limit)
+            CallToolResult(content = listOf(TextContent(text = logEntries.joinToString("\n"))))
+        }
 
-            CallToolResult(
-                content = listOf(
-                    TextContent(
-                        text = logEntries.joinToString("\n")
+        // Tool 2: High-level sequence diagnostics
+        server.addTool(
+            name = "analyze_log_stats",
+            description = "Analyze the log file to calculate high-level statistics, severity distributions, and top error patterns",
+            inputSchema = ToolSchema(
+                properties = buildJsonObject {
+                    putJsonObject("filePath") {
+                        put("type", "string")
+                        put("description", "Optional custom path to the log file. If omitted, the default log file is analyzed.")
+                    }
+                }
+            )
+        ) { request ->
+            val customPath = (request.arguments?.get("filePath") as? JsonPrimitive)?.content
+            val logFilePath = customPath ?: targetFilePath
+            val logFile = File(logFilePath)
+
+            log.info("MCP Tool analyze_log_stats invoked for file={}", logFilePath)
+
+            if (!logFile.exists()) {
+                return@addTool CallToolResult(
+                    content = listOf(
+                        TextContent(text = "Target log file not found at: ${logFile.absolutePath}.")
+                    ),
+                    isError = true
+                )
+            }
+
+            val stats = mcpLogQueryService.calculateStats(logFile)
+
+            if (stats.totalEntries == 0L) {
+                return@addTool CallToolResult(
+                    content = listOf(
+                        TextContent(text = "Log file is empty or no valid log entries could be parsed.")
                     )
                 )
+            }
+
+            val responseText = """
+                ### Log Analysis Summary for ${logFile.name}
+
+                * **Total Valid Entries Processed**: ${stats.totalEntries}
+
+                #### Severity Level Distribution:
+                ${stats.levelCounts.entries.joinToString("\n") { (level, count) ->
+                val percent = (count.toDouble() / stats.totalEntries) * 100
+                "* **$level**: $count (${String.format("%.2f", percent)}%)"
+            }}
+
+                #### Top Error Patterns (LogLevel ERROR):
+                ${if (stats.topErrors.isEmpty()) "No error patterns detected." else stats.topErrors.joinToString("\n") { error ->
+                "* **Count**: ${error.count} - `${error.message}`"
+            }}
+            """.trimIndent()
+
+            CallToolResult(
+                content = listOf(TextContent(text = responseText))
             )
         }
 

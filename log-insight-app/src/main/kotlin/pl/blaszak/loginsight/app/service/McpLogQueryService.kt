@@ -8,6 +8,7 @@ import kotlinx.coroutines.withContext
 import org.springframework.stereotype.Service
 import pl.blaszak.loginsight.app.FileReader
 import pl.blaszak.loginsight.core.model.LogLevel
+import pl.blaszak.loginsight.core.model.LogStats
 import pl.blaszak.loginsight.core.stream.LogPipeline
 import java.io.File
 
@@ -15,6 +16,7 @@ import java.io.File
 class McpLogQueryService(
     private val logPipeline: LogPipeline
 ) {
+
     /**
      * Queries and filters logs from a target file based on severity level and regex pattern.
      */
@@ -27,7 +29,6 @@ class McpLogQueryService(
         val rawLinesFlow = FileReader.readFileLines(logFile)
         var parsedFlow = logPipeline.streamFromLines(rawLinesFlow)
 
-        // Filter by log level if specified
         if (levelFilter != null) {
             val level = runCatching { LogLevel.valueOf(levelFilter.uppercase()) }.getOrNull()
             if (level != null) {
@@ -35,7 +36,6 @@ class McpLogQueryService(
             }
         }
 
-        // Filter by regex or substring pattern if specified
         if (patternFilter != null) {
             val regex = runCatching { Regex(patternFilter, RegexOption.IGNORE_CASE) }.getOrNull()
             parsedFlow = if (regex != null) {
@@ -45,9 +45,18 @@ class McpLogQueryService(
             }
         }
 
-        // Take up to the requested limit and map to formatted strings
         parsedFlow.take(limit)
             .toList()
             .map { entry -> "[${entry.timestamp}] ${entry.level}: ${entry.message.value}" }
+    }
+
+    /**
+     * Performs a memory-safe, lazy sequence statistics calculation over the entire log file.
+     * Offloaded to the blocking I/O dispatcher.
+     */
+    suspend fun calculateStats(logFile: File): LogStats = withContext(Dispatchers.IO) {
+        logFile.useLines { lines ->
+            logPipeline.calculateStats(lines)
+        }
     }
 }
