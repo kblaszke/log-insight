@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.withContext
 import org.springframework.stereotype.Service
-import pl.blaszak.loginsight.app.FileReader
+import pl.blaszak.loginsight.core.logSource.FileReader
 import pl.blaszak.loginsight.core.model.LogLevel
 import pl.blaszak.loginsight.core.model.LogStats
 import pl.blaszak.loginsight.core.stream.LogPipeline

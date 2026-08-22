@@ -1,6 +1,6 @@
 package pl.blaszak.loginsight.app.controller
 
-import pl.blaszak.loginsight.app.FileReader
+import pl.blaszak.loginsight.core.logSource.FileReader
 import pl.blaszak.loginsight.app.dto.LogEntryDto
 import pl.blaszak.loginsight.core.model.LogEntry
 import pl.blaszak.loginsight.core.model.LogLevel

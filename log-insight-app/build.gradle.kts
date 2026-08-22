@@ -8,7 +8,7 @@ plugins {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(libs.versions.javaVersion.get().toInt()))
     }
 }
 
@@ -25,7 +25,7 @@ dependencies {
     implementation(libs.kotlin.coroutines.core)
 
     // Reactive Spring WebFlux
-    implementation(libs.spring.boot.starter.webflux)
+    implementation(libs.springBootStarterWebflux)
 
     implementation(libs.mcp.kotlin.sdk)
 
@@ -33,10 +33,13 @@ dependencies {
     implementation(libs.jackson.module.kotlin)
 
     // SpringDoc OpenAPI / Swagger UI
-    implementation(libs.springdoc.openapi.webflux.ui)
+    implementation(libs.springdocOpenapiWebfluxUi)
+
+    implementation(platform(libs.googleCloudLibrariesBom))
+    implementation(libs.googleCloudLogging)
 
     // Test dependencies
-    testImplementation(libs.spring.boot.starter.test)
+    testImplementation(libs.springBootStarterTest)
     testImplementation(libs.kotest.runner)
     testImplementation(libs.kotest.assertions)
     testImplementation(libs.kotest.spring.extension)
