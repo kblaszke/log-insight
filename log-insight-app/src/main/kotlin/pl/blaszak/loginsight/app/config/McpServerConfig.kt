@@ -2,6 +2,7 @@ package pl.blaszak.loginsight.app.config
 
 import io.modelcontextprotocol.kotlin.sdk.types.ToolSchema
 import io.modelcontextprotocol.kotlin.sdk.server.Server
+import io.modelcontextprotocol.kotlin.sdk.server.StdioServerTransport
 import io.modelcontextprotocol.kotlin.sdk.server.ServerOptions
 import io.modelcontextprotocol.kotlin.sdk.types.CallToolResult
 import io.modelcontextprotocol.kotlin.sdk.types.Implementation
@@ -19,10 +20,17 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Profile
 import pl.blaszak.loginsight.app.service.McpLogQueryService
 import java.io.File
+import kotlinx.coroutines.launch
+import kotlinx.io.asSink
+import kotlinx.io.asSource
+import kotlinx.io.buffered
+import org.springframework.boot.ApplicationRunner
 
 @Configuration(proxyBeanMethods = false)
+@Profile("mcp")
 class McpServerConfig(
     private val mcpLogQueryService: McpLogQueryService,
     @param:Value("\${log-insight.mcp.target-file-path:logs/app.log}") private val targetFilePath: String
@@ -145,6 +153,25 @@ class McpServerConfig(
         }
 
         return server
+    }
+
+    @Bean
+    fun mcpServerRunner(mcpServer: Server): ApplicationRunner {
+        return ApplicationRunner {
+            log.info("Initializing MCP Server connection via Stdio transport...")
+            mcpScope.launch {
+                try {
+                    val transport = StdioServerTransport(
+                        input = System.`in`.asSource().buffered(),
+                        output = System.out.asSink().buffered()
+                    )
+                    mcpServer.createSession(transport)
+                    log.info("MCP Server successfully connected and listening.")
+                } catch (e: Exception) {
+                    log.error("Critical error during MCP Server connection lifecycle", e)
+                }
+            }
+        }
     }
 
     @PreDestroy

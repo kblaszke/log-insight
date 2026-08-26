@@ -38,6 +38,7 @@ dependencies {
     implementation(platform(libs.googleCloudLibrariesBom))
     implementation(libs.googleCloudLogging)
 
+
     // Test dependencies
     testImplementation(libs.springBootStarterTest)
     testImplementation(libs.kotest.runner)

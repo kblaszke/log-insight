@@ -1,33 +1,706 @@
-[2026-08-12T10:00:00Z] [INFO] Starting LogInsight App on JVM 21...
-[2026-08-12T10:00:01Z] [INFO] Active profiles: default
-[2026-08-12T10:00:02Z] [DEBUG] Scanning packages for Spring WebFlux configuration...
-[2026-08-12T10:00:03Z] [DEBUG] Found AppConfig, JacksonConfig, McpServerConfig.
-[2026-08-12T10:00:04Z] [INFO] Registering reactive LogPipeline instance as a Spring Bean.
-[2026-08-12T10:00:05Z] [INFO] Initializing MCP Server connection via Stdio transport...
-[2026-08-12T10:00:05Z] [INFO] MCP Server successfully connected and listening on stdin/stdout.
-[2026-08-12T10:00:06Z] [INFO] Netty started on port(s) 8080 (http)
-[2026-08-12T10:00:06Z] [INFO] Started AppKt in 6.42 seconds (process running for 7.1)
-[2026-08-12T10:01:10Z] [DEBUG] DispatcherHandler mapped GET /api/logs/stream
-[2026-08-12T10:01:12Z] [INFO] SSE connection opened for client session: hand-739fa
-[2026-08-12T10:02:15Z] [DEBUG] FileReader initiating asynchronous cold flow on File: logs/app.log
-[2026-08-12T10:03:22Z] [DEBUG] Parsing raw text line: '[2026-08-12T10:00:00Z] [INFO] Starting LogInsight App...'
-[2026-08-12T10:04:30Z] [WARN] Reactive Netty thread 'reactor-http-nio-2' blocked for 120ms (slow I/O fallback)
-[2026-08-12T10:05:00Z] [INFO] SSE heartbeat signal sent to session: hand-739fa
-[2026-08-12T10:08:15Z] [DEBUG] Cleaning up temporary file: live-server-logs823924.log
-[2026-08-12T10:10:00Z] [WARN] Connection pool database-pool-1 approaching maximum limit (9/10 active connections).
-[2026-08-12T10:11:05Z] [WARN] Database slow query detected: SELECT * FROM logs WHERE severity = 'ERROR' (took 1850ms)
-[2026-08-12T10:12:15Z] [INFO] Connection pool database-pool-1 recovered. Active connections: 2.
-[2026-08-12T10:15:20Z] [INFO] SSE connection closed by client: hand-739fa
-[2026-08-12T10:20:00Z] [INFO] Gateway check: health status UP.
-[2026-08-12T10:22:12Z] [DEBUG] Received JSON-RPC request for tool: list_tools
-[2026-08-12T10:22:12Z] [DEBUG] Sending list_tools response containing 1 registered tool.
-[2026-08-12T10:22:15Z] [INFO] MCP Tool query_logs invoked with level=ERROR, pattern=null, limit=50
-[2026-08-12T10:25:30Z] [ERROR] Failed to dispatch SSE event to client. Connection closed prematurely by host gateway.
-[2026-08-12T10:25:32Z] [INFO] Retrying client handshake for session: retry-02a83
-[2026-08-12T10:25:35Z] [ERROR] Handshake failed: Connection timeout after 3000ms.
-[2026-08-12T10:27:00Z] [INFO] Attempting to reconnect database pool...
-[2026-08-12T10:28:40Z] [DEBUG] Garbage Collector executed: G1 Young Generation (reclaimed 340MB)
-[2026-08-12T10:30:15Z] [ERROR] OutOfMemoryError: Metaspace limit reached. Initiating heap dump.
-[2026-08-12T10:30:18Z] [ERROR] Severe crash occurred. Stopping MCP Stdio transport server thread.
-[2026-08-12T10:30:20Z] [INFO] Shutting down MCP Server Coroutine Scope...
-[2026-08-12T10:30:21Z] [INFO] LogInsight App stopped.
+[2026-08-25T12:31:45.594980921Z] [INFO] [transaction-c925ff50-0ed3-47e0-8091-fac3cb4eea46] Request processed successfully in 11ms
+[2026-08-25T12:31:45.694980921Z] [INFO] [transaction-9609f596-2697-4c01-ac01-0405493e0bf3] Request processed successfully in 12ms
+[2026-08-25T12:31:45.794980921Z] [INFO] [transaction-0167176a-080c-48d2-8731-4ecce6a3e688] Request processed successfully in 13ms
+[2026-08-25T12:31:45.894980921Z] [INFO] [transaction-a6336928-4787-42f7-94b0-d7da77261c15] Request processed successfully in 14ms
+[2026-08-25T12:31:45.994980921Z] [INFO] [transaction-20a4e44c-50bc-41d0-a29c-c0120549a974] Request processed successfully in 15ms
+[2026-08-25T12:31:46.094980921Z] [INFO] [transaction-21a3e579-5350-44c0-9fc9-8891ff15f9aa] Request processed successfully in 16ms
+[2026-08-25T12:31:46.194980921Z] [INFO] [transaction-f41fc801-c718-4596-84dd-f275bf6ec3e9] Request processed successfully in 17ms
+[2026-08-25T12:31:46.294980921Z] [INFO] [transaction-2b4fbc79-28a8-4523-a2fc-5069648ff57d] Request processed successfully in 18ms
+[2026-08-25T12:31:46.394980921Z] [INFO] [transaction-0bef9107-115c-4820-822c-8a688d67e60e] Request processed successfully in 19ms
+[2026-08-25T12:31:46.494980921Z] [INFO] [transaction-d1adf871-92bf-4a83-b6e0-0eefc09280a7] Request processed successfully in 20ms
+[2026-08-25T12:31:46.594980921Z] [INFO] [transaction-ac31aff4-3302-4243-a8b6-05b64b5964ca] Request processed successfully in 21ms
+[2026-08-25T12:31:46.694980921Z] [INFO] [transaction-b87bb61a-9c29-4f41-b2fe-45c3e910999e] Request processed successfully in 22ms
+[2026-08-25T12:31:46.794980921Z] [INFO] [transaction-bfa16be3-8ee1-4732-8801-3a9e90843b8d] Request processed successfully in 23ms
+[2026-08-25T12:31:46.894980921Z] [INFO] [transaction-02144956-8c22-47a1-ab12-3ee0cc164f0c] Request processed successfully in 24ms
+[2026-08-25T12:31:46.994980921Z] [INFO] [transaction-e4b5dc20-d6cd-4392-9e86-84133ddce8d2] Request processed successfully in 10ms
+[2026-08-25T12:31:47.094980921Z] [INFO] [transaction-67b62b99-0b34-479b-adb1-bae9d4594795] Request processed successfully in 11ms
+[2026-08-25T12:31:47.194980921Z] [INFO] [transaction-0ae108ca-74d5-4dc6-ac35-fdaa8b4f682d] Request processed successfully in 12ms
+[2026-08-25T12:31:47.294980921Z] [INFO] [transaction-b2287f96-2a36-4d13-8deb-18234327ee3c] Request processed successfully in 13ms
+[2026-08-25T12:31:47.394980921Z] [INFO] [transaction-9ce97362-3a9a-4576-b3c2-5a0ec54a293b] Request processed successfully in 14ms
+[2026-08-25T12:31:47.494980921Z] [INFO] [transaction-5830f23b-749e-4529-a75b-0d0220fe5b22] Request processed successfully in 15ms
+[2026-08-25T12:31:47.594980921Z] [INFO] [transaction-27a0fc1a-094a-4e83-972a-792562269ed0] Request processed successfully in 16ms
+[2026-08-25T12:31:47.694980921Z] [INFO] [transaction-ec1b1f5b-56cc-4d32-9f69-6c5c3d548720] Request processed successfully in 17ms
+[2026-08-25T12:31:47.794980921Z] [INFO] [transaction-110f0f97-cf12-4c8d-9da5-15d4832fbe38] Request processed successfully in 18ms
+[2026-08-25T12:31:47.894980921Z] [INFO] [transaction-7839fbde-db66-47e9-a791-95515e7a5640] Request processed successfully in 19ms
+[2026-08-25T12:31:47.994980921Z] [INFO] [transaction-138e7fe2-391e-4076-b8b4-c14a5163b403] Request processed successfully in 20ms
+[2026-08-25T12:31:48.094980921Z] [INFO] [transaction-836c897b-0ac0-4fbc-a5d3-8bbd8a3d9411] Request processed successfully in 21ms
+[2026-08-25T12:31:48.194980921Z] [INFO] [transaction-4995759d-1948-4b14-82d2-155bbeb75192] Request processed successfully in 22ms
+[2026-08-25T12:31:48.294980921Z] [INFO] [transaction-c34ddbab-c64b-4096-abe0-33c10a44eee9] Request processed successfully in 23ms
+[2026-08-25T12:31:48.394980921Z] [INFO] [transaction-dd390a67-d97d-49dd-b9e7-101dc6a4f119] Request processed successfully in 24ms
+[2026-08-25T12:31:48.494980921Z] [INFO] [transaction-c50440d7-ab0f-4262-8abf-b7e8d49abfc4] Request processed successfully in 10ms
+[2026-08-25T12:31:48.594980921Z] [INFO] [transaction-64b38ff1-90ff-4677-aa88-475f184a3697] Request processed successfully in 11ms
+[2026-08-25T12:31:48.694980921Z] [INFO] [transaction-39e65013-f158-403f-b92f-cc35ef92b1cb] Request processed successfully in 12ms
+[2026-08-25T12:31:48.794980921Z] [INFO] [transaction-ede53153-9f80-43e5-878d-a13d768dcf98] Request processed successfully in 13ms
+[2026-08-25T12:31:48.894980921Z] [INFO] [transaction-0e844d42-b371-43fb-83ea-4664f6cd9f8b] Request processed successfully in 14ms
+[2026-08-25T12:31:48.994980921Z] [INFO] [transaction-2891c159-7427-43cb-a150-a8db6ee6e399] Request processed successfully in 15ms
+[2026-08-25T12:31:49.094980921Z] [INFO] [transaction-a7c5a63b-c68b-4e88-9866-b6f7458df486] Request processed successfully in 16ms
+[2026-08-25T12:31:49.194980921Z] [INFO] [transaction-e48afe58-fc38-4f65-a40d-fe0111c7c6c9] Request processed successfully in 17ms
+[2026-08-25T12:31:49.294980921Z] [INFO] [transaction-3174240f-8d0f-4b4a-b128-6fed090f8298] Request processed successfully in 18ms
+[2026-08-25T12:31:49.394980921Z] [INFO] [transaction-4a11b80a-944d-48a6-aa96-21fc67511777] Request processed successfully in 19ms
+[2026-08-25T12:31:49.494980921Z] [INFO] [transaction-4a0a38fc-3383-4300-8052-8bbdb6b3fa79] Request processed successfully in 20ms
+[2026-08-25T12:31:49.594980921Z] [INFO] [transaction-6fb3171d-b0f4-408e-914f-8258d61de530] Request processed successfully in 21ms
+[2026-08-25T12:31:49.694980921Z] [INFO] [transaction-62f64ec5-f595-4cca-b3c0-adced939fa00] Request processed successfully in 22ms
+[2026-08-25T12:31:49.794980921Z] [INFO] [transaction-04fd9399-39fd-435e-aab7-f41274b61dca] Request processed successfully in 23ms
+[2026-08-25T12:31:49.894980921Z] [INFO] [transaction-6b54cef5-81e8-4ec0-8656-7dd2e3fe0546] Request processed successfully in 24ms
+[2026-08-25T12:31:49.994980921Z] [INFO] [transaction-f9e7f371-5243-4b0b-8c8a-a0592ca6cabc] Request processed successfully in 10ms
+[2026-08-25T12:31:50.094980921Z] [INFO] [transaction-6b478e37-9273-423a-a5ae-c12d191b51ad] Request processed successfully in 11ms
+[2026-08-25T12:31:50.194980921Z] [INFO] [transaction-e9a01430-7b2f-400c-9bee-3b68a2df1bcb] Request processed successfully in 12ms
+[2026-08-25T12:31:50.294980921Z] [INFO] [transaction-a070fade-7a4a-459f-b11c-7e6fec2f44e3] Request processed successfully in 13ms
+[2026-08-25T12:31:50.394980921Z] [INFO] [transaction-0dcf3907-7da4-4c50-836b-ebcdf35691e0] Request processed successfully in 14ms
+[2026-08-25T12:31:50.494980921Z] [INFO] [transaction-367cdf53-f10d-460f-9a45-3d607861b0ab] Request processed successfully in 15ms
+[2026-08-25T12:31:50.594980921Z] [INFO] [transaction-0831f7dc-2fd1-4704-87ca-955838c2bc51] Request processed successfully in 16ms
+[2026-08-25T12:31:50.694980921Z] [INFO] [transaction-d57d55d4-7b3e-4095-893c-79a058341e67] Request processed successfully in 17ms
+[2026-08-25T12:31:50.794980921Z] [INFO] [transaction-f6ff0ec3-7efd-46bc-93a9-f5cc618a3cca] Request processed successfully in 18ms
+[2026-08-25T12:31:50.894980921Z] [INFO] [transaction-4c51a136-bfd7-43b8-939f-376f41cd9450] Request processed successfully in 19ms
+[2026-08-25T12:31:50.994980921Z] [INFO] [transaction-3d902a9d-e597-4907-8ce3-46649da3bf5f] Request processed successfully in 20ms
+[2026-08-25T12:31:51.094980921Z] [INFO] [transaction-01a04c16-adb5-4ae4-8856-8ee5ca284428] Request processed successfully in 21ms
+[2026-08-25T12:31:51.194980921Z] [INFO] [transaction-e780810c-3409-4881-8b45-73b0b4b27ac1] Request processed successfully in 22ms
+[2026-08-25T12:31:51.294980921Z] [INFO] [transaction-69a72a8f-a4d3-49b3-b3e6-37a6245cfd15] Request processed successfully in 23ms
+[2026-08-25T12:31:51.394980921Z] [INFO] [transaction-c2a780a8-2ed2-4e39-aa03-4b904cc423d3] Request processed successfully in 24ms
+[2026-08-25T12:31:51.494980921Z] [INFO] [transaction-0adf1c33-2f25-4545-9ba2-64b258096438] Request processed successfully in 10ms
+[2026-08-25T12:31:51.594980921Z] [INFO] [transaction-70540c5f-0a34-4c2a-92e7-ca7f28d38e04] Request processed successfully in 11ms
+[2026-08-25T12:31:51.694980921Z] [INFO] [transaction-592720b4-a32e-4000-90b5-65c7886e55ca] Request processed successfully in 12ms
+[2026-08-25T12:31:51.794980921Z] [INFO] [transaction-e5a8eca5-258e-48db-8bd3-9688be29714a] Request processed successfully in 13ms
+[2026-08-25T12:31:51.894980921Z] [INFO] [transaction-d61fc6b5-b5e9-4ebe-af36-ddf8fd0e44ec] Request processed successfully in 14ms
+[2026-08-25T12:31:51.994980921Z] [INFO] [transaction-2b0d78ad-cdf7-40d1-9ec9-6fd40e98b76e] Request processed successfully in 15ms
+[2026-08-25T12:31:52.094980921Z] [INFO] [transaction-397eb0df-7d10-4d84-a238-a4b7374ead94] Request processed successfully in 16ms
+[2026-08-25T12:31:52.194980921Z] [INFO] [transaction-d990cf55-be1e-4474-b24e-227a573e28f0] Request processed successfully in 17ms
+[2026-08-25T12:31:52.294980921Z] [INFO] [transaction-09236390-b1ca-4d53-b467-78c7a3beeba3] Request processed successfully in 18ms
+[2026-08-25T12:31:52.394980921Z] [INFO] [transaction-a331ed91-35b2-4780-90f8-c43b105e9c52] Request processed successfully in 19ms
+[2026-08-25T12:31:52.494980921Z] [INFO] [transaction-ffdce557-7a7d-44a0-8689-a329c7f98915] Request processed successfully in 20ms
+[2026-08-25T12:31:52.594980921Z] [INFO] [transaction-be8eb86c-5084-4000-bdf6-667d7ab6fdea] Request processed successfully in 21ms
+[2026-08-25T12:31:52.694980921Z] [INFO] [transaction-d79594f2-64b8-4714-958d-240034670eab] Request processed successfully in 22ms
+[2026-08-25T12:31:52.794980921Z] [INFO] [transaction-c30888bb-5266-47fc-9e3c-5b31a5a232ab] Request processed successfully in 23ms
+[2026-08-25T12:31:52.894980921Z] [INFO] [transaction-5c60e0b3-dc98-41b8-9709-896beac508f3] Request processed successfully in 24ms
+[2026-08-25T12:31:52.994980921Z] [INFO] [transaction-fcfe0fdf-2bc3-4a3d-9f24-a02a94928873] Request processed successfully in 10ms
+[2026-08-25T12:31:53.094980921Z] [INFO] [transaction-656abc09-47d9-4bc3-9975-db8b8aa6ee75] Request processed successfully in 11ms
+[2026-08-25T12:31:53.194980921Z] [INFO] [transaction-a4dea470-8f8f-47ae-9c84-e1314c2248fa] Request processed successfully in 12ms
+[2026-08-25T12:31:53.294980921Z] [INFO] [transaction-bd0bcb52-52c6-4908-9fb6-56c14dd63c28] Request processed successfully in 13ms
+[2026-08-25T12:31:53.394980921Z] [INFO] [transaction-1286f571-44fa-40ab-a495-af53618447c1] Request processed successfully in 14ms
+[2026-08-25T12:31:53.494980921Z] [INFO] [transaction-190d6894-1be8-4e95-a7be-d63261236060] Request processed successfully in 15ms
+[2026-08-25T12:31:53.594980921Z] [INFO] [transaction-f5c1b8d3-ce6f-4ff8-bc5e-7b2181aaa928] Request processed successfully in 16ms
+[2026-08-25T12:31:53.694980921Z] [INFO] [transaction-4fd1bcff-5314-46c4-8f0f-6aa4d06657fa] Request processed successfully in 17ms
+[2026-08-25T12:31:53.794980921Z] [INFO] [transaction-8e78a834-cf50-453d-a9a3-952da46858ac] Request processed successfully in 18ms
+[2026-08-25T12:31:53.894980921Z] [INFO] [transaction-a740bddf-cdf5-4e3c-a7d7-d36379687511] Request processed successfully in 19ms
+[2026-08-25T12:31:53.994980921Z] [INFO] [transaction-34ec4c64-744e-45bf-b1ef-476854d95e8f] Request processed successfully in 20ms
+[2026-08-25T12:31:54.094980921Z] [INFO] [transaction-ddc18829-503a-4cd5-9d6b-bc40cb178899] Request processed successfully in 21ms
+[2026-08-25T12:31:54.194980921Z] [INFO] [transaction-91ba0aae-b900-4b46-b820-48c5e84c7d17] Request processed successfully in 22ms
+[2026-08-25T12:31:54.294980921Z] [INFO] [transaction-63186036-98e4-44d8-bd0d-cd3482e1b594] Request processed successfully in 23ms
+[2026-08-25T12:31:54.394980921Z] [INFO] [transaction-41476b1c-4dfa-4111-87ff-bc122f4fac40] Request processed successfully in 24ms
+[2026-08-25T12:31:54.494980921Z] [INFO] [transaction-2a23903b-8bcf-4765-baae-e612e9385c7d] Request processed successfully in 10ms
+[2026-08-25T12:31:54.594980921Z] [INFO] [transaction-75c57b7f-1ef7-4566-b3b5-be656de206e6] Request processed successfully in 11ms
+[2026-08-25T12:31:54.694980921Z] [INFO] [transaction-0baa4e00-6bd9-4b01-9271-5497933041ef] Request processed successfully in 12ms
+[2026-08-25T12:31:54.794980921Z] [INFO] [transaction-d1ebf324-88e0-40c8-9654-a951a76a1437] Request processed successfully in 13ms
+[2026-08-25T12:31:54.894980921Z] [INFO] [transaction-5fe7ce66-b7dc-42e7-83f6-b1a3184670ce] Request processed successfully in 14ms
+[2026-08-25T12:31:54.994980921Z] [INFO] [transaction-68df3acc-73a7-4668-ad90-706c2e41d2d0] Request processed successfully in 15ms
+[2026-08-25T12:31:55.094980921Z] [INFO] [transaction-9f55bc8c-510c-4b7b-ae12-c00f1adba20d] Request processed successfully in 16ms
+[2026-08-25T12:31:55.194980921Z] [INFO] [transaction-13989edf-e14d-4a68-8ede-4233a2633b54] Request processed successfully in 17ms
+[2026-08-25T12:31:55.294980921Z] [INFO] [transaction-8e5cf5d3-6982-4465-ae9e-98de095946dc] Request processed successfully in 18ms
+[2026-08-25T12:31:55.394980921Z] [INFO] [transaction-04458ea4-6d6b-43bf-87eb-00063c8770ef] Request processed successfully in 19ms
+[2026-08-25T12:31:55.494980921Z] [INFO] [transaction-51b911c5-0b89-447c-bf7a-791eef8e5fa5] Request processed successfully in 20ms
+[2026-08-25T12:31:55.594980921Z] [INFO] [transaction-4fae7e77-940d-4491-9850-cf74f9529788] Request processed successfully in 21ms
+[2026-08-25T12:31:55.694980921Z] [INFO] [transaction-b646419e-114d-4622-8547-b633f8b96987] Request processed successfully in 22ms
+[2026-08-25T12:31:55.794980921Z] [INFO] [transaction-70b65924-15e8-4a98-af77-cb4ac5584bde] Request processed successfully in 23ms
+[2026-08-25T12:31:55.894980921Z] [INFO] [transaction-1a9eeccd-e466-4319-96c6-ef483390ed45] Request processed successfully in 24ms
+[2026-08-25T12:31:55.994980921Z] [INFO] [transaction-ff4c0c64-1510-46f3-9601-9a54eaa3df87] Request processed successfully in 10ms
+[2026-08-25T12:31:56.094980921Z] [INFO] [transaction-d099864b-ad01-4e8a-b5ac-94076605fe2c] Request processed successfully in 11ms
+[2026-08-25T12:31:56.194980921Z] [INFO] [transaction-da481fb7-c751-4fde-bef2-6dcdfba388c5] Request processed successfully in 12ms
+[2026-08-25T12:31:56.294980921Z] [INFO] [transaction-9496cbe1-fa93-4064-8fb6-5b371d920427] Request processed successfully in 13ms
+[2026-08-25T12:31:56.394980921Z] [INFO] [transaction-6cfb52be-a14a-4bd5-b799-639b6982e4d5] Request processed successfully in 14ms
+[2026-08-25T12:31:56.494980921Z] [INFO] [transaction-c8d50c36-5a49-4653-98b6-d56a2e0ae399] Request processed successfully in 15ms
+[2026-08-25T12:31:56.594980921Z] [INFO] [transaction-86d98134-49d9-4f58-97e0-ec6a1b05cacf] Request processed successfully in 16ms
+[2026-08-25T12:31:56.694980921Z] [INFO] [transaction-c67d581d-0517-46d0-a1fd-f691f6020a78] Request processed successfully in 17ms
+[2026-08-25T12:31:56.794980921Z] [INFO] [transaction-2ed637cb-117c-468a-b646-431dde5357e4] Request processed successfully in 18ms
+[2026-08-25T12:31:56.894980921Z] [INFO] [transaction-fa8d09d8-37c9-4a2b-a428-bcbaf69ad765] Request processed successfully in 19ms
+[2026-08-25T12:31:56.994980921Z] [INFO] [transaction-e3fc4cb7-1537-4001-856d-2893830feb76] Request processed successfully in 20ms
+[2026-08-25T12:31:57.094980921Z] [INFO] [transaction-0efff780-5ad4-4389-8e27-c10c4512e538] Request processed successfully in 21ms
+[2026-08-25T12:31:57.194980921Z] [INFO] [transaction-e7c40b38-5816-4667-8a93-23f9312cf869] Request processed successfully in 22ms
+[2026-08-25T12:31:57.294980921Z] [INFO] [transaction-e0791d76-2846-4cd0-b300-bdd534686441] Request processed successfully in 23ms
+[2026-08-25T12:31:57.394980921Z] [INFO] [transaction-2b9895f7-13fb-48b8-a5fc-b077f51d70e7] Request processed successfully in 24ms
+[2026-08-25T12:31:57.494980921Z] [INFO] [transaction-37d74f00-b36d-4e56-a064-babc9173fe6a] Request processed successfully in 10ms
+[2026-08-25T12:31:57.594980921Z] [INFO] [transaction-d3bfb57b-3895-4400-bf70-3c813ae123b9] Request processed successfully in 11ms
+[2026-08-25T12:31:57.694980921Z] [INFO] [transaction-2fecd4df-b7ef-4f60-9a00-0ba59f966411] Request processed successfully in 12ms
+[2026-08-25T12:31:57.794980921Z] [INFO] [transaction-0a962955-46e6-4ac9-a1e1-d39fbf09064a] Request processed successfully in 13ms
+[2026-08-25T12:31:57.894980921Z] [INFO] [transaction-930dcb4c-b40b-426f-9ff7-3793dbe0facc] Request processed successfully in 14ms
+[2026-08-25T12:31:57.994980921Z] [INFO] [transaction-433454e3-a1b3-4760-af9c-92dbe2e4c968] Request processed successfully in 15ms
+[2026-08-25T12:31:58.094980921Z] [INFO] [transaction-5f0ecc60-f291-4808-bb0e-1ec59e1b4320] Request processed successfully in 16ms
+[2026-08-25T12:31:58.194980921Z] [INFO] [transaction-9d1a177c-d589-4a57-8dc7-03f4e91f756c] Request processed successfully in 17ms
+[2026-08-25T12:31:58.294980921Z] [INFO] [transaction-f8db994d-bed6-4e65-a2de-1c4cbafdb32d] Request processed successfully in 18ms
+[2026-08-25T12:31:58.394980921Z] [INFO] [transaction-d439bc5d-8261-43c2-ada7-c3bba00e5f3f] Request processed successfully in 19ms
+[2026-08-25T12:31:58.494980921Z] [INFO] [transaction-125d15db-d983-4cd7-8b1d-dd8c68872dcb] Request processed successfully in 20ms
+[2026-08-25T12:31:58.594980921Z] [INFO] [transaction-3cc5b2a3-2e85-4d45-97ff-0104a47b0b5a] Request processed successfully in 21ms
+[2026-08-25T12:31:58.694980921Z] [INFO] [transaction-f962912e-315b-4f0a-8804-ab3325a27776] Request processed successfully in 22ms
+[2026-08-25T12:31:58.794980921Z] [INFO] [transaction-f75bfc94-89fa-4f78-9dc6-fe8a4696df06] Request processed successfully in 23ms
+[2026-08-25T12:31:58.894980921Z] [INFO] [transaction-fe110a46-85cd-4c98-ae48-44d869381914] Request processed successfully in 24ms
+[2026-08-25T12:31:58.994980921Z] [INFO] [transaction-7451b517-9805-4ad1-b2a7-774c6bcdaeae] Request processed successfully in 10ms
+[2026-08-25T12:31:59.094980921Z] [INFO] [transaction-37ab48d4-15c9-494d-ba8e-adb8ecf83216] Request processed successfully in 11ms
+[2026-08-25T12:31:59.194980921Z] [INFO] [transaction-6f65bbf4-491d-4a0a-85eb-c55dbf0d17a7] Request processed successfully in 12ms
+[2026-08-25T12:31:59.294980921Z] [INFO] [transaction-9924e9d2-e4f8-4cf4-9cc6-2c2eb709180f] Request processed successfully in 13ms
+[2026-08-25T12:31:59.394980921Z] [INFO] [transaction-62f887bb-19cc-44a8-858e-b05d4e77f976] Request processed successfully in 14ms
+[2026-08-25T12:31:59.494980921Z] [INFO] [transaction-bf2436b1-3ea8-4dd8-9a13-befe3bec02c4] Request processed successfully in 15ms
+[2026-08-25T12:31:59.594980921Z] [INFO] [transaction-5eb0bde4-c39b-4e25-b2f2-57f228b49994] Request processed successfully in 16ms
+[2026-08-25T12:31:59.694980921Z] [INFO] [transaction-66c7074f-4830-4f4d-9a5b-251a4423cd3c] Request processed successfully in 17ms
+[2026-08-25T12:31:59.794980921Z] [INFO] [transaction-3dcdc353-505d-4d0e-8fb1-b3e10974b275] Request processed successfully in 18ms
+[2026-08-25T12:31:59.894980921Z] [INFO] [transaction-29ffcf14-c36e-4fb3-a6f2-4d86a54dee61] Request processed successfully in 19ms
+[2026-08-25T12:31:59.994980921Z] [INFO] [transaction-6243f992-8515-4951-867a-748327934db4] Request processed successfully in 20ms
+[2026-08-25T12:32:00.094980921Z] [INFO] [transaction-d6d39814-1e6b-4613-90b3-cc05d1d2e194] Request processed successfully in 21ms
+[2026-08-25T12:32:00.194980921Z] [INFO] [transaction-834c5ef3-31b6-487b-95c2-ed809df3898c] Request processed successfully in 22ms
+[2026-08-25T12:32:00.294980921Z] [INFO] [transaction-8c276203-b1e6-44b9-98ab-34cc82c8cf3a] Request processed successfully in 23ms
+[2026-08-25T12:32:00.394980921Z] [INFO] [transaction-b7238564-6753-453e-affb-68183f2eda60] Request processed successfully in 24ms
+[2026-08-25T12:32:00.494980921Z] [INFO] [transaction-88ae739e-436a-4938-bf8a-96c57156c705] Request processed successfully in 10ms
+[2026-08-25T12:32:00.594980921Z] [INFO] [transaction-e42c9655-9e62-4975-9ee8-151175640503] Request processed successfully in 11ms
+[2026-08-25T12:32:00.694980921Z] [INFO] [transaction-86997c01-f644-46be-8e7a-31ecb0eca1dc] Request processed successfully in 12ms
+[2026-08-25T12:32:00.794980921Z] [INFO] [transaction-a3e15062-7b94-4e0e-bee9-836be3bcdece] Request processed successfully in 13ms
+[2026-08-25T12:32:00.894980921Z] [INFO] [transaction-40f6e289-e35c-47ee-9df7-c015d187fed3] Request processed successfully in 14ms
+[2026-08-25T12:32:00.994980921Z] [INFO] [transaction-a9ad6d2b-3184-4479-8019-fd7289a80ed3] Request processed successfully in 15ms
+[2026-08-25T12:32:01.094980921Z] [INFO] [transaction-fcb01090-4b05-4fbf-ac8f-b56c16c48881] Request processed successfully in 16ms
+[2026-08-25T12:32:01.194980921Z] [INFO] [transaction-bf331e93-5b87-4a6e-b742-0bc2c66b6479] Request processed successfully in 17ms
+[2026-08-25T12:32:01.294980921Z] [INFO] [transaction-d3c9640a-2097-4baf-848f-f86990f5d3f4] Request processed successfully in 18ms
+[2026-08-25T12:32:01.394980921Z] [INFO] [transaction-818b6f77-420f-44a3-9d66-986b5f4cca59] Request processed successfully in 19ms
+[2026-08-25T12:32:01.494980921Z] [INFO] [transaction-9072c452-d030-4dd6-8d9b-881bec5d84ce] Request processed successfully in 20ms
+[2026-08-25T12:32:01.594980921Z] [INFO] [transaction-4bf84cd1-7220-45e8-9eb2-23b63d819bfa] Request processed successfully in 21ms
+[2026-08-25T12:32:01.694980921Z] [INFO] [transaction-ca0d7d51-b304-447b-a300-2995eb6018f3] Request processed successfully in 22ms
+[2026-08-25T12:32:01.794980921Z] [INFO] [transaction-5f29e3c3-06bf-4629-9017-603952c861c0] Request processed successfully in 23ms
+[2026-08-25T12:32:01.894980921Z] [INFO] [transaction-d2d8e6c8-b6a9-471a-b1bc-8a7da43cdcee] Request processed successfully in 24ms
+[2026-08-25T12:32:01.994980921Z] [INFO] [transaction-61cfb17f-2f4c-4242-910b-27534ec9258a] Request processed successfully in 10ms
+[2026-08-25T12:32:02.094980921Z] [INFO] [transaction-cb94e200-2ee9-4abd-8069-1e413a381a8b] Request processed successfully in 11ms
+[2026-08-25T12:32:02.194980921Z] [INFO] [transaction-c5521fba-89b8-4d50-a557-6f5b2e20994e] Request processed successfully in 12ms
+[2026-08-25T12:32:02.294980921Z] [INFO] [transaction-5128ca39-38b2-4af9-82ab-abc402eef2f4] Request processed successfully in 13ms
+[2026-08-25T12:32:02.394980921Z] [INFO] [transaction-6fd326a7-3730-456e-bb61-a3af06453474] Request processed successfully in 14ms
+[2026-08-25T12:32:02.494980921Z] [INFO] [transaction-bb2ca084-e6e8-4af7-9763-1a30f36c5be3] Request processed successfully in 15ms
+[2026-08-25T12:32:02.594980921Z] [INFO] [transaction-6d7f1e99-6ef9-480c-ab4e-d355895bdc69] Request processed successfully in 16ms
+[2026-08-25T12:32:02.694980921Z] [INFO] [transaction-e6e022ca-556c-4be5-b8b5-9402800273a3] Request processed successfully in 17ms
+[2026-08-25T12:32:02.794980921Z] [INFO] [transaction-4a287051-2e21-4672-9d21-1b469bcee655] Request processed successfully in 18ms
+[2026-08-25T12:32:02.894980921Z] [INFO] [transaction-659fdd25-6519-4569-a369-1d08fc793f04] Request processed successfully in 19ms
+[2026-08-25T12:32:02.994980921Z] [INFO] [transaction-23c5f004-1a53-42db-8fdc-c20bdf2b3475] Request processed successfully in 20ms
+[2026-08-25T12:32:03.094980921Z] [INFO] [transaction-2e71892c-e92a-40b5-b788-28532128fb03] Request processed successfully in 21ms
+[2026-08-25T12:32:03.194980921Z] [INFO] [transaction-2b3a7769-0231-4101-b60d-6f829df24329] Request processed successfully in 22ms
+[2026-08-25T12:32:03.294980921Z] [INFO] [transaction-71c596e7-09ed-49df-aa83-ab7db815590d] Request processed successfully in 23ms
+[2026-08-25T12:32:03.394980921Z] [INFO] [transaction-b629739a-cd76-4b8b-bfd9-952c05d4123f] Request processed successfully in 24ms
+[2026-08-25T12:32:03.494980921Z] [INFO] [transaction-f639c21c-ebb8-4a2d-9873-92579000bcb5] Request processed successfully in 10ms
+[2026-08-25T12:32:03.594980921Z] [INFO] [transaction-0bd1823f-412a-4c6e-a591-7699de9d9fb8] Request processed successfully in 11ms
+[2026-08-25T12:32:03.694980921Z] [INFO] [transaction-d859085f-039e-4da7-acae-e1d9fa5896fd] Request processed successfully in 12ms
+[2026-08-25T12:32:03.794980921Z] [INFO] [transaction-d52582e2-b647-429c-bf4f-d5b9617a59ac] Request processed successfully in 13ms
+[2026-08-25T12:32:03.894980921Z] [INFO] [transaction-617f938d-d79b-4442-b56a-dbda65c9fcff] Request processed successfully in 14ms
+[2026-08-25T12:32:03.994980921Z] [INFO] [transaction-bda493b7-1e0b-44f2-a7d6-10db51f4acb4] Request processed successfully in 15ms
+[2026-08-25T12:32:04.094980921Z] [INFO] [transaction-099364b1-e97f-4d45-aac4-cb952d734200] Request processed successfully in 16ms
+[2026-08-25T12:32:04.194980921Z] [INFO] [transaction-6ab45f5c-a208-4e98-bf31-6530e5a9a54b] Request processed successfully in 17ms
+[2026-08-25T12:32:04.294980921Z] [INFO] [transaction-8537af2b-a458-4ff7-ada2-3861581c77e1] Request processed successfully in 18ms
+[2026-08-25T12:32:04.394980921Z] [INFO] [transaction-9a3914d3-8ba4-4053-8adb-695784b8d8f7] Request processed successfully in 19ms
+[2026-08-25T12:32:04.494980921Z] [INFO] [transaction-afe0b302-eb03-420b-b98d-bfaf4bb8b91f] Request processed successfully in 20ms
+[2026-08-25T12:32:04.594980921Z] [INFO] [transaction-03fd4834-1a9b-4315-b9f1-a060cc8aa2bc] Request processed successfully in 21ms
+[2026-08-25T12:32:04.694980921Z] [INFO] [transaction-f7228d05-58ae-4cd2-9491-ccf88645b707] Request processed successfully in 22ms
+[2026-08-25T12:32:04.794980921Z] [INFO] [transaction-69ae72cb-2500-487d-aab1-d52f544defc4] Request processed successfully in 23ms
+[2026-08-25T12:32:04.894980921Z] [INFO] [transaction-5358b0fe-0a0e-480a-a9ab-4051f1d873ae] Request processed successfully in 24ms
+[2026-08-25T12:32:04.994980921Z] [INFO] [transaction-e39074d3-1400-476a-ac91-18e2e35f5cf1] Request processed successfully in 10ms
+[2026-08-25T12:32:05.094980921Z] [INFO] [transaction-00e50444-cb15-4200-9579-8dd2643c7b52] Request processed successfully in 11ms
+[2026-08-25T12:32:05.194980921Z] [INFO] [transaction-019fa6f4-c071-4f55-af0d-503f356f6d24] Request processed successfully in 12ms
+[2026-08-25T12:32:05.294980921Z] [INFO] [transaction-6412bb42-901f-4a67-a5c1-76e094922108] Request processed successfully in 13ms
+[2026-08-25T12:32:05.394980921Z] [INFO] [transaction-609ae0e2-f2f9-4c60-a8a2-a7c495765fb8] Request processed successfully in 14ms
+[2026-08-25T12:32:05.494980921Z] [INFO] [transaction-4951ec61-543a-4bc5-a919-c235eea27963] Request processed successfully in 15ms
+[2026-08-25T12:32:05.594980921Z] [INFO] [transaction-d1137b7e-e6e1-46e6-883f-c56d993bdee3] Request processed successfully in 16ms
+[2026-08-25T12:32:05.694980921Z] [INFO] [transaction-8e033814-3e01-47e5-bbac-2f13d6cd9745] Request processed successfully in 17ms
+[2026-08-25T12:32:05.794980921Z] [INFO] [transaction-eccc98a1-925b-4716-8fe6-27ba1927bc66] Request processed successfully in 18ms
+[2026-08-25T12:32:05.894980921Z] [INFO] [transaction-0b049069-c299-486e-bbc2-1ad35315cb16] Request processed successfully in 19ms
+[2026-08-25T12:32:05.994980921Z] [INFO] [transaction-ac68cd77-ac39-4583-930d-e5dfb1612196] Request processed successfully in 20ms
+[2026-08-25T12:32:06.094980921Z] [INFO] [transaction-eb34f7d8-62e0-423f-ab96-1dd36e2bbe1c] Request processed successfully in 21ms
+[2026-08-25T12:32:06.194980921Z] [INFO] [transaction-e8047bc4-4c43-4590-ac13-102ed44552a0] Request processed successfully in 22ms
+[2026-08-25T12:32:06.294980921Z] [INFO] [transaction-fa3439eb-aa0f-4daa-a3df-f8692a57e56c] Request processed successfully in 23ms
+[2026-08-25T12:32:06.394980921Z] [INFO] [transaction-acbb9b67-10a9-465e-a316-a0e96070619e] Request processed successfully in 24ms
+[2026-08-25T12:32:06.494980921Z] [INFO] [transaction-e1883ce1-fb81-48b8-8ba3-a75609862ad0] Request processed successfully in 10ms
+[2026-08-25T12:32:06.594980921Z] [INFO] [transaction-68bf5a70-00af-44c4-ba49-37a5217a32f6] Request processed successfully in 11ms
+[2026-08-25T12:32:06.694980921Z] [INFO] [transaction-b0bbe970-fd01-4b31-b0b4-5c3c05fc7064] Request processed successfully in 12ms
+[2026-08-25T12:32:06.794980921Z] [INFO] [transaction-85041801-ed84-4a56-b7c2-14555f53dfee] Request processed successfully in 13ms
+[2026-08-25T12:32:06.894980921Z] [INFO] [transaction-7010535d-0e6a-473c-a719-e238b10ce4c2] Request processed successfully in 14ms
+[2026-08-25T12:32:06.994980921Z] [INFO] [transaction-87205e60-411a-4a41-be02-d7a88d854efa] Request processed successfully in 15ms
+[2026-08-25T12:32:07.094980921Z] [INFO] [transaction-f625432f-ce7a-4a4f-a3bb-4e985eb91d36] Request processed successfully in 16ms
+[2026-08-25T12:32:07.194980921Z] [INFO] [transaction-ab34b35b-65c4-484b-8f8c-15ea9b1120bd] Request processed successfully in 17ms
+[2026-08-25T12:32:07.294980921Z] [INFO] [transaction-14eed743-6b6a-4fb1-ba93-c3f71515e909] Request processed successfully in 18ms
+[2026-08-25T12:32:07.394980921Z] [INFO] [transaction-9d0aae29-370a-45ca-a592-4f04d05506bb] Request processed successfully in 19ms
+[2026-08-25T12:32:07.494980921Z] [INFO] [transaction-4df4312e-ba1f-4768-b7c9-28250c33d8d5] Request processed successfully in 20ms
+[2026-08-25T12:32:07.594980921Z] [INFO] [transaction-2f3b6ef3-8977-42a6-8746-45e680207163] Request processed successfully in 21ms
+[2026-08-25T12:32:07.694980921Z] [INFO] [transaction-1c7a2dde-49eb-4e84-bbe2-43e1fdfa2feb] Request processed successfully in 22ms
+[2026-08-25T12:32:07.794980921Z] [INFO] [transaction-aa9cd6a5-394f-4dbb-8120-a45f15d8ea27] Request processed successfully in 23ms
+[2026-08-25T12:32:07.894980921Z] [INFO] [transaction-8d281aa7-7da2-453d-9bf3-60073fd237f1] Request processed successfully in 24ms
+[2026-08-25T12:32:07.994980921Z] [INFO] [transaction-f4e8d7a1-9dc1-494b-b9e4-f1ff9a14e62a] Request processed successfully in 10ms
+[2026-08-25T12:32:08.094980921Z] [INFO] [transaction-6cd682b0-49db-4237-98e1-c400be791152] Request processed successfully in 11ms
+[2026-08-25T12:32:08.194980921Z] [INFO] [transaction-14e19623-8f56-4daf-95fd-5b2409d64468] Request processed successfully in 12ms
+[2026-08-25T12:32:08.294980921Z] [INFO] [transaction-41bfb30d-bf34-4ed7-b00c-75b382d87183] Request processed successfully in 13ms
+[2026-08-25T12:32:08.394980921Z] [INFO] [transaction-911a34f6-59bb-4519-897f-5b34f1ce2381] Request processed successfully in 14ms
+[2026-08-25T12:32:08.494980921Z] [INFO] [transaction-f6792830-3e75-4cae-8626-1c896a4b7eda] Request processed successfully in 15ms
+[2026-08-25T12:32:08.594980921Z] [INFO] [transaction-3761783c-cbe7-4ca6-9247-d28dfaac0823] Request processed successfully in 16ms
+[2026-08-25T12:32:08.694980921Z] [INFO] [transaction-ee4810a5-56de-4a54-a788-edcb6c0a2786] Request processed successfully in 17ms
+[2026-08-25T12:32:08.794980921Z] [INFO] [transaction-2ee4b5fe-c79b-4259-81a7-c080ac3fba99] Request processed successfully in 18ms
+[2026-08-25T12:32:08.894980921Z] [INFO] [transaction-07cb989b-6117-4261-9462-1978b9af6f75] Request processed successfully in 19ms
+[2026-08-25T12:32:08.994980921Z] [INFO] [transaction-3a91a8df-3941-4677-b809-df7a19dd9c41] Request processed successfully in 20ms
+[2026-08-25T12:32:09.094980921Z] [INFO] [transaction-382a38ee-9b39-47e6-bcf4-63f7333b3927] Request processed successfully in 21ms
+[2026-08-25T12:32:09.194980921Z] [INFO] [transaction-1e83fcd0-cc2e-44ae-8401-259ef4dc2ce4] Request processed successfully in 22ms
+[2026-08-25T12:32:09.294980921Z] [INFO] [transaction-a04af795-4723-49d0-837f-88743406aeb3] Request processed successfully in 23ms
+[2026-08-25T12:32:09.394980921Z] [INFO] [transaction-8c23cbad-f585-4b85-8b8c-6c9cc13672af] Request processed successfully in 24ms
+[2026-08-25T12:32:09.494980921Z] [INFO] [transaction-57c71156-d467-43cc-8658-c237a7f131fb] Request processed successfully in 10ms
+[2026-08-25T12:32:09.594980921Z] [INFO] [transaction-14a00ffa-51a1-4681-95c3-64d6e044fc60] Request processed successfully in 11ms
+[2026-08-25T12:32:09.694980921Z] [INFO] [transaction-15952e40-b1a3-4570-b142-c22022f44c57] Request processed successfully in 12ms
+[2026-08-25T12:32:09.794980921Z] [INFO] [transaction-9136c9e0-3c6f-41fc-ab6f-d864649fe15a] Request processed successfully in 13ms
+[2026-08-25T12:32:09.894980921Z] [INFO] [transaction-1a92aee8-6cdd-41db-ba05-fa91567fd372] Request processed successfully in 14ms
+[2026-08-25T12:32:09.994980921Z] [INFO] [transaction-885d9d42-a9e1-4bbd-893a-29caa9f7f1f5] Request processed successfully in 15ms
+[2026-08-25T12:32:10.094980921Z] [INFO] [transaction-2df60763-19af-4834-aa7d-e5182d8b7065] Request processed successfully in 16ms
+[2026-08-25T12:32:10.194980921Z] [INFO] [transaction-01b2f516-8ff9-49cd-a769-9a28bcb64c94] Request processed successfully in 17ms
+[2026-08-25T12:32:10.294980921Z] [INFO] [transaction-82356627-b2d0-4972-9dc1-2dbeea6ac4ba] Request processed successfully in 18ms
+[2026-08-25T12:32:10.394980921Z] [INFO] [transaction-33101268-bb93-4a84-aaef-1c3ac1e98c1a] Request processed successfully in 19ms
+[2026-08-25T12:32:10.494980921Z] [INFO] [transaction-83f03b5a-6d39-4a30-8bcb-ab4f93964469] Request processed successfully in 20ms
+[2026-08-25T12:32:10.594980921Z] [INFO] [transaction-97b2b65b-177e-4d74-b6a4-9cc994596fef] Request processed successfully in 21ms
+[2026-08-25T12:32:10.694980921Z] [INFO] [transaction-0ccf4f48-1ef5-458e-b93d-3ac61f31b4d4] Request processed successfully in 22ms
+[2026-08-25T12:32:10.794980921Z] [INFO] [transaction-b3edb0f2-7b8b-454b-8ae8-caa03ef02101] Request processed successfully in 23ms
+[2026-08-25T12:32:10.894980921Z] [INFO] [transaction-fe60d630-4d6a-4da8-8b24-6f5738e5dd6c] Request processed successfully in 24ms
+[2026-08-25T12:32:10.994980921Z] [INFO] [transaction-62a3d529-1e76-46a0-82b7-d9bb9e3978e4] Request processed successfully in 10ms
+[2026-08-25T12:32:11.094980921Z] [INFO] [transaction-b5207029-aea5-4636-840d-f2a71ea2d02d] Request processed successfully in 11ms
+[2026-08-25T12:32:11.194980921Z] [INFO] [transaction-046f322f-e567-447c-9c14-2b55c647b808] Request processed successfully in 12ms
+[2026-08-25T12:32:11.294980921Z] [INFO] [transaction-f8030bf2-f642-4ed5-accc-158422ba4b1c] Request processed successfully in 13ms
+[2026-08-25T12:32:11.394980921Z] [INFO] [transaction-aaed8703-4129-4d40-aa37-2cb0acecafda] Request processed successfully in 14ms
+[2026-08-25T12:32:11.494980921Z] [INFO] [transaction-cca30086-05d7-4ba7-9976-7a1e797a6a19] Request processed successfully in 15ms
+[2026-08-25T12:32:11.594980921Z] [INFO] [transaction-10d6d76e-5a17-494e-8b4f-011a02a4a9d5] Request processed successfully in 16ms
+[2026-08-25T12:32:11.694980921Z] [INFO] [transaction-01a8d527-d4be-4f70-a16b-8f4c3fdd4fe7] Request processed successfully in 17ms
+[2026-08-25T12:32:11.794980921Z] [INFO] [transaction-b20a1f1c-32bf-453d-a158-ee89ed4a3051] Request processed successfully in 18ms
+[2026-08-25T12:32:11.894980921Z] [INFO] [transaction-deef7748-1f37-4c03-8965-6aec6dadfcac] Request processed successfully in 19ms
+[2026-08-25T12:32:11.994980921Z] [INFO] [transaction-a8e93d52-e475-42ec-987c-c191352d6330] Request processed successfully in 20ms
+[2026-08-25T12:32:12.094980921Z] [INFO] [transaction-5b1a72c9-923e-4a64-b5a9-fc2b7e9ddd36] Request processed successfully in 21ms
+[2026-08-25T12:32:12.194980921Z] [INFO] [transaction-d3b98fa2-90f7-4820-8f2b-36181877a1e0] Request processed successfully in 22ms
+[2026-08-25T12:32:12.294980921Z] [INFO] [transaction-55747b7d-a427-4ba0-b825-3a3ce09ec2ed] Request processed successfully in 23ms
+[2026-08-25T12:32:12.394980921Z] [INFO] [transaction-0bf106c1-6601-4f7c-a5b1-024e21c2f933] Request processed successfully in 24ms
+[2026-08-25T12:32:12.494980921Z] [INFO] [transaction-654197b7-59df-4399-8250-5cbfea594787] Request processed successfully in 10ms
+[2026-08-25T12:32:12.594980921Z] [INFO] [transaction-e618cd3e-4dab-4b74-8398-81132798ee35] Request processed successfully in 11ms
+[2026-08-25T12:32:12.694980921Z] [INFO] [transaction-dba471ac-dd4d-453f-9463-0414a6a324f3] Request processed successfully in 12ms
+[2026-08-25T12:32:12.794980921Z] [INFO] [transaction-169bafdb-f000-430e-ac51-d3f635172f39] Request processed successfully in 13ms
+[2026-08-25T12:32:12.894980921Z] [INFO] [transaction-ff0321ab-bd49-41a5-aedc-71ca7b938430] Request processed successfully in 14ms
+[2026-08-25T12:32:12.994980921Z] [INFO] [transaction-40ab89be-322c-4e0b-8d64-519f66395741] Request processed successfully in 15ms
+[2026-08-25T12:32:13.094980921Z] [INFO] [transaction-e8916f42-f3b5-48ad-8e7d-cc442a040272] Request processed successfully in 16ms
+[2026-08-25T12:32:13.194980921Z] [INFO] [transaction-6205ec5f-9a47-4a9c-9171-e72a7f4bea25] Request processed successfully in 17ms
+[2026-08-25T12:32:13.294980921Z] [INFO] [transaction-a4cc37c6-e85a-44c4-b345-f7ce18a276ac] Request processed successfully in 18ms
+[2026-08-25T12:32:13.394980921Z] [INFO] [transaction-ddb08ad5-f757-4f17-a3aa-0ee37dfeb576] Request processed successfully in 19ms
+[2026-08-25T12:32:13.494980921Z] [INFO] [transaction-40366d15-30eb-4e5e-bbba-39673ca9933d] Request processed successfully in 20ms
+[2026-08-25T12:32:13.594980921Z] [INFO] [transaction-34c82660-7c38-49b8-ab34-2b53e840e49a] Request processed successfully in 21ms
+[2026-08-25T12:32:13.694980921Z] [INFO] [transaction-3c3ce9fd-3918-4cf3-bddb-375d8064fb71] Request processed successfully in 22ms
+[2026-08-25T12:32:13.794980921Z] [INFO] [transaction-ce590969-52e1-4b40-88c4-5f73a32278a2] Request processed successfully in 23ms
+[2026-08-25T12:32:13.894980921Z] [INFO] [transaction-15fb5975-9d12-4399-8229-febceb9c93c5] Request processed successfully in 24ms
+[2026-08-25T12:32:13.994980921Z] [INFO] [transaction-d267b02f-f89d-4ce4-9d2f-471628123c04] Request processed successfully in 10ms
+[2026-08-25T12:32:14.094980921Z] [INFO] [transaction-46e2dd1c-b4e6-4519-a2f4-cef009e80b0a] Request processed successfully in 11ms
+[2026-08-25T12:32:14.194980921Z] [INFO] [transaction-d2db96b0-02a9-43aa-aaae-72fb8a6e3f23] Request processed successfully in 12ms
+[2026-08-25T12:32:14.294980921Z] [INFO] [transaction-367968ca-2818-4a27-abbf-bc0385129b24] Request processed successfully in 13ms
+[2026-08-25T12:32:14.394980921Z] [INFO] [transaction-5f295708-5b7b-4232-be0c-6b1872a29813] Request processed successfully in 14ms
+[2026-08-25T12:32:14.494980921Z] [INFO] [transaction-92ef4bad-f026-44d3-a23c-f5c8589e43d9] Request processed successfully in 15ms
+[2026-08-25T12:32:14.594980921Z] [INFO] [transaction-43e8d9bd-77ff-475e-b27a-0c82cdf87bb2] Request processed successfully in 16ms
+[2026-08-25T12:32:14.694980921Z] [INFO] [transaction-20ce9848-7116-40ca-934f-8eea5d072666] Request processed successfully in 17ms
+[2026-08-25T12:32:14.794980921Z] [INFO] [transaction-fe59ac2c-d688-4b88-b8f0-28d52871c623] Request processed successfully in 18ms
+[2026-08-25T12:32:14.894980921Z] [INFO] [transaction-0771fe55-6a37-41ea-9d51-aedc8d476a6c] Request processed successfully in 19ms
+[2026-08-25T12:32:14.994980921Z] [INFO] [transaction-34261d0f-89f4-4df7-8bba-c882bb6e17db] Request processed successfully in 20ms
+[2026-08-25T12:32:15.094980921Z] [INFO] [transaction-2fe6ce78-fb2c-4a3c-9001-daa0d90c58cb] Request processed successfully in 21ms
+[2026-08-25T12:32:15.194980921Z] [INFO] [transaction-ae45d641-53d9-404a-b2f0-ede90398145c] Request processed successfully in 22ms
+[2026-08-25T12:32:15.294980921Z] [INFO] [transaction-997d8726-d317-415d-953b-3831bc6af69f] Request processed successfully in 23ms
+[2026-08-25T12:32:15.394980921Z] [INFO] [transaction-4fcdf2c2-caaf-4bc6-bf9a-a5e46dbe8373] Request processed successfully in 24ms
+[2026-08-25T12:32:15.494980921Z] [INFO] [transaction-945d3e80-d802-4c5a-ae38-5e936c7bbba1] Request processed successfully in 10ms
+[2026-08-25T12:32:15.594980921Z] [INFO] [transaction-95987967-b376-4e92-806f-12284a685bad] Request processed successfully in 11ms
+[2026-08-25T12:32:15.694980921Z] [INFO] [transaction-3067759f-86a9-4292-b2d7-0768aa7c0e7a] Request processed successfully in 12ms
+[2026-08-25T12:32:15.794980921Z] [INFO] [transaction-a8e6da75-0f6a-45fa-85ea-6d6b39aa7a55] Request processed successfully in 13ms
+[2026-08-25T12:32:15.894980921Z] [INFO] [transaction-fddf3534-116a-4046-902a-8e94ee400d89] Request processed successfully in 14ms
+[2026-08-25T12:32:15.994980921Z] [INFO] [transaction-6024c09c-a09d-44de-aa75-965afe3bd289] Request processed successfully in 15ms
+[2026-08-25T12:32:16.094980921Z] [INFO] [transaction-debfb4b9-0c38-428c-8457-cc589064788b] Request processed successfully in 16ms
+[2026-08-25T12:32:16.194980921Z] [INFO] [transaction-c7d5cbb2-3151-4a5f-b127-4c9749d67cb8] Request processed successfully in 17ms
+[2026-08-25T12:32:16.294980921Z] [INFO] [transaction-b8a28220-4a89-4a54-a45e-e070a031ab2e] Request processed successfully in 18ms
+[2026-08-25T12:32:16.394980921Z] [INFO] [transaction-6616ce8c-80d9-4329-88c5-a8d01e3e036f] Request processed successfully in 19ms
+[2026-08-25T12:32:16.494980921Z] [INFO] [transaction-058c4656-b301-4de3-b426-b9a8f00dd606] Request processed successfully in 20ms
+[2026-08-25T12:32:16.594980921Z] [INFO] [transaction-00878846-39a5-4835-b1ec-f4ed332e01a0] Request processed successfully in 21ms
+[2026-08-25T12:32:16.694980921Z] [INFO] [transaction-7c3294ad-47e1-469a-96ba-b9c3823bf28f] Request processed successfully in 22ms
+[2026-08-25T12:32:16.794980921Z] [INFO] [transaction-68777479-8c08-4f32-93d7-ed9e9b714ca9] Request processed successfully in 23ms
+[2026-08-25T12:32:16.894980921Z] [INFO] [transaction-06e55143-e3e9-4754-8f15-5753ec6ad1f3] Request processed successfully in 24ms
+[2026-08-25T12:32:16.994980921Z] [INFO] [transaction-471ee613-1050-4437-b09f-6dfc089859f5] Request processed successfully in 10ms
+[2026-08-25T12:32:17.094980921Z] [INFO] [transaction-b8e24e45-e74b-484a-a4f1-1929fdd66f44] Request processed successfully in 11ms
+[2026-08-25T12:32:17.194980921Z] [INFO] [transaction-32e66e97-54d0-458c-8a11-1e062ff5235a] Request processed successfully in 12ms
+[2026-08-25T12:32:17.294980921Z] [INFO] [transaction-f379adaf-eaf9-4dca-bd8d-86d79a4a07e0] Request processed successfully in 13ms
+[2026-08-25T12:32:17.394980921Z] [INFO] [transaction-4a4db4f6-ac7e-4eae-b813-7889b5c244cf] Request processed successfully in 14ms
+[2026-08-25T12:32:17.494980921Z] [INFO] [transaction-52da2030-8534-4e7c-9acf-68fd60864b80] Request processed successfully in 15ms
+[2026-08-25T12:32:17.594980921Z] [INFO] [transaction-81502365-58b4-4382-90cf-dce0b150eaff] Request processed successfully in 16ms
+[2026-08-25T12:32:17.694980921Z] [INFO] [transaction-317bdcb3-de94-48a0-98a1-82670a7e4c22] Request processed successfully in 17ms
+[2026-08-25T12:32:17.794980921Z] [INFO] [transaction-72e7e7d4-8abb-4b62-bce5-983f0ce241e6] Request processed successfully in 18ms
+[2026-08-25T12:32:17.894980921Z] [INFO] [transaction-dfbf33f1-0b6c-4ae8-b9f7-04578f56bebb] Request processed successfully in 19ms
+[2026-08-25T12:32:17.994980921Z] [INFO] [transaction-45cfb196-0c0d-4f1c-8cd5-e1f02b08a830] Request processed successfully in 20ms
+[2026-08-25T12:32:18.094980921Z] [INFO] [transaction-103bcffd-d93c-419c-9384-0adecb3ae6e3] Request processed successfully in 21ms
+[2026-08-25T12:32:18.194980921Z] [INFO] [transaction-412c2f31-0c48-42bc-9e9d-d41c52d6026b] Request processed successfully in 22ms
+[2026-08-25T12:32:18.294980921Z] [INFO] [transaction-227963e8-0672-40ca-b062-38bbd13039b1] Request processed successfully in 23ms
+[2026-08-25T12:32:18.394980921Z] [INFO] [transaction-ad059e3c-83c3-4ee6-b105-d92eadfb5cd8] Request processed successfully in 24ms
+[2026-08-25T12:32:18.494980921Z] [INFO] [transaction-c150c953-6af8-47d7-8658-b6111acd4a1e] Request processed successfully in 10ms
+[2026-08-25T12:32:18.594980921Z] [INFO] [transaction-1d733e7c-d88d-4817-9142-ff323660f992] Request processed successfully in 11ms
+[2026-08-25T12:32:18.694980921Z] [INFO] [transaction-e4d91926-8627-4512-a85b-9b55532f9da3] Request processed successfully in 12ms
+[2026-08-25T12:32:18.794980921Z] [INFO] [transaction-6a408597-9386-44ac-9451-100e48effc93] Request processed successfully in 13ms
+[2026-08-25T12:32:18.894980921Z] [INFO] [transaction-3f6596e3-4b38-4fb5-b82d-6f0207aad04e] Request processed successfully in 14ms
+[2026-08-25T12:32:18.994980921Z] [INFO] [transaction-ee2a7960-95f5-458d-b6d0-fa4fa83602a4] Request processed successfully in 15ms
+[2026-08-25T12:32:19.094980921Z] [INFO] [transaction-a1c8f5a7-8627-44ca-b9e0-b68fb1d6f8ed] Request processed successfully in 16ms
+[2026-08-25T12:32:19.194980921Z] [INFO] [transaction-4c32c57c-c1f5-4c18-b3c5-cb883a8caab5] Request processed successfully in 17ms
+[2026-08-25T12:32:19.294980921Z] [INFO] [transaction-13dd9863-98a5-4cf7-8969-f91576a45384] Request processed successfully in 18ms
+[2026-08-25T12:32:19.394980921Z] [INFO] [transaction-a81f09cf-6b5d-46ae-90e4-0e0567c8573e] Request processed successfully in 19ms
+[2026-08-25T12:32:19.494980921Z] [INFO] [transaction-65757955-7dd0-4ffd-ab53-2901027d2fcf] Request processed successfully in 20ms
+[2026-08-25T12:32:19.594980921Z] [INFO] [transaction-79e4e98e-1e94-4e1e-ac9e-ee9b3cdb5b8c] Request processed successfully in 21ms
+[2026-08-25T12:32:19.694980921Z] [INFO] [transaction-c3b5d9e0-2659-4d57-8552-ad253c22a85c] Request processed successfully in 22ms
+[2026-08-25T12:32:19.794980921Z] [INFO] [transaction-c443dab5-ec2a-4c7c-bfb1-400c81576045] Request processed successfully in 23ms
+[2026-08-25T12:32:19.894980921Z] [INFO] [transaction-38391ac1-f1ab-4dae-bdf0-3842075a4643] Request processed successfully in 24ms
+[2026-08-25T12:32:19.994980921Z] [INFO] [transaction-75258e97-27b9-4762-8f5c-77049ea1e012] Request processed successfully in 10ms
+[2026-08-25T12:32:20.094980921Z] [INFO] [transaction-b7879440-55e1-4ec7-adcb-20358c816ac9] Request processed successfully in 11ms
+[2026-08-25T12:32:20.194980921Z] [INFO] [transaction-d44dd6ad-0e32-400a-a29a-cdfb1504a401] Request processed successfully in 12ms
+[2026-08-25T12:32:20.294980921Z] [INFO] [transaction-2187edd1-e8da-44e6-8af7-e91dc6175983] Request processed successfully in 13ms
+[2026-08-25T12:32:20.394980921Z] [INFO] [transaction-7a2bedd9-1634-49f7-9593-b6015bcbe72b] Request processed successfully in 14ms
+[2026-08-25T12:32:20.494980921Z] [INFO] [transaction-ab07c14f-039b-42e7-8fa8-48be3a601023] Request processed successfully in 15ms
+[2026-08-25T12:32:20.594980921Z] [INFO] [transaction-87c2b02b-8666-4661-9b6b-40d1a3782437] Request processed successfully in 16ms
+[2026-08-25T12:32:20.694980921Z] [INFO] [transaction-67eb7ce6-1ef4-48fb-96aa-85943cd6ffc9] Request processed successfully in 17ms
+[2026-08-25T12:32:20.794980921Z] [INFO] [transaction-a6ebdf8a-6a3e-40db-9d77-5bc8d34a2e6e] Request processed successfully in 18ms
+[2026-08-25T12:32:20.894980921Z] [INFO] [transaction-0c94baf0-ba79-412b-a3c7-41c600176a95] Request processed successfully in 19ms
+[2026-08-25T12:32:20.994980921Z] [INFO] [transaction-8dfd823b-b165-4118-9996-8a602d5a0c9d] Request processed successfully in 20ms
+[2026-08-25T12:32:21.094980921Z] [INFO] [transaction-baeaba60-ea75-4c81-be85-baf3c0869539] Request processed successfully in 21ms
+[2026-08-25T12:32:21.194980921Z] [INFO] [transaction-6c1b2a29-de15-458a-8add-f38f9261f514] Request processed successfully in 22ms
+[2026-08-25T12:32:21.294980921Z] [INFO] [transaction-327f889f-d0a1-4992-86b9-3391b61af58b] Request processed successfully in 23ms
+[2026-08-25T12:32:21.394980921Z] [INFO] [transaction-154a5770-83da-4e89-ab80-1e09c2c24d15] Request processed successfully in 24ms
+[2026-08-25T12:32:21.494980921Z] [INFO] [transaction-5faf8021-0f7c-4083-8cb0-befcb06e5540] Request processed successfully in 10ms
+[2026-08-25T12:32:21.594980921Z] [INFO] [transaction-168f5320-f966-43ea-9ce7-e7ee00bf30f7] Request processed successfully in 11ms
+[2026-08-25T12:32:21.694980921Z] [INFO] [transaction-0514eb55-c1f5-4e5d-b40a-ccda84448c8c] Request processed successfully in 12ms
+[2026-08-25T12:32:21.794980921Z] [INFO] [transaction-78b05715-44f8-4cd1-a22f-18ea83918c6d] Request processed successfully in 13ms
+[2026-08-25T12:32:21.894980921Z] [INFO] [transaction-29e6f78a-99dc-4233-8690-055dc4d9eaff] Request processed successfully in 14ms
+[2026-08-25T12:32:21.994980921Z] [INFO] [transaction-4fd2c0c6-c8c1-40f1-854c-a2a6c19789ce] Request processed successfully in 15ms
+[2026-08-25T12:32:22.094980921Z] [INFO] [transaction-24c5793f-35ae-47f0-94fb-226ae4aa3a19] Request processed successfully in 16ms
+[2026-08-25T12:32:22.194980921Z] [INFO] [transaction-ddb51d02-ceef-496a-b306-aa38cdccdcf9] Request processed successfully in 17ms
+[2026-08-25T12:32:22.294980921Z] [INFO] [transaction-8dc9d27f-ad3c-4bf8-ab11-29840d29a606] Request processed successfully in 18ms
+[2026-08-25T12:32:22.394980921Z] [INFO] [transaction-9ca65837-1e44-48dd-8ca3-599323029e5a] Request processed successfully in 19ms
+[2026-08-25T12:32:22.494980921Z] [INFO] [transaction-db00bd62-e308-4bf5-9b2f-3f60b0fb1a7c] Request processed successfully in 20ms
+[2026-08-25T12:32:22.594980921Z] [INFO] [transaction-2adc87de-6509-44e8-9288-9385966b8a27] Request processed successfully in 21ms
+[2026-08-25T12:32:22.694980921Z] [INFO] [transaction-af89caa9-3c54-454e-bfeb-eecada6a6075] Request processed successfully in 22ms
+[2026-08-25T12:32:22.794980921Z] [INFO] [transaction-36725f0e-64f1-44c7-8314-121d0cc63fa1] Request processed successfully in 23ms
+[2026-08-25T12:32:22.894980921Z] [INFO] [transaction-23c80974-af52-4b61-b90d-6dc62a5e08ef] Request processed successfully in 24ms
+[2026-08-25T12:32:22.994980921Z] [INFO] [transaction-ee4abac2-91a0-4c66-8932-59d72eeaca7e] Request processed successfully in 10ms
+[2026-08-25T12:32:23.094980921Z] [INFO] [transaction-de748166-b4a8-4028-8765-bc09e382b3ef] Request processed successfully in 11ms
+[2026-08-25T12:32:23.194980921Z] [INFO] [transaction-09747a19-fed2-47c6-b694-e2740ca7f3e8] Request processed successfully in 12ms
+[2026-08-25T12:32:23.294980921Z] [INFO] [transaction-06d9e766-6398-438a-917f-39905724b975] Request processed successfully in 13ms
+[2026-08-25T12:32:23.394980921Z] [INFO] [transaction-f4092ec2-18e4-4b82-9c8a-cd8a38ac8940] Request processed successfully in 14ms
+[2026-08-25T12:32:23.494980921Z] [INFO] [transaction-738a261f-436f-49fc-bbf0-76b9e97b795c] Request processed successfully in 15ms
+[2026-08-25T12:32:23.594980921Z] [INFO] [transaction-8703ea87-704c-4e8b-aa7e-da444c40ca4f] Request processed successfully in 16ms
+[2026-08-25T12:32:23.694980921Z] [INFO] [transaction-ba37d1e2-75ca-4299-b9a4-7a8e8899cdee] Request processed successfully in 17ms
+[2026-08-25T12:32:23.794980921Z] [INFO] [transaction-41d77b40-ff6b-40b0-ae34-9a92dac9bc94] Request processed successfully in 18ms
+[2026-08-25T12:32:23.894980921Z] [INFO] [transaction-d7d1eca0-96da-47a3-a9e8-f5ae95556a51] Request processed successfully in 19ms
+[2026-08-25T12:32:23.994980921Z] [INFO] [transaction-324d7ab9-34af-4017-8129-c79bc1fa8ea8] Request processed successfully in 20ms
+[2026-08-25T12:32:24.094980921Z] [INFO] [transaction-f176b369-6cdb-4487-8534-7e1dd0a20d94] Request processed successfully in 21ms
+[2026-08-25T12:32:24.194980921Z] [INFO] [transaction-eeac7aae-905f-454e-afec-adb3c9b7dfb3] Request processed successfully in 22ms
+[2026-08-25T12:32:24.294980921Z] [INFO] [transaction-000bedbb-5bca-4eb4-ab6e-bd18ccd39543] Request processed successfully in 23ms
+[2026-08-25T12:32:24.394980921Z] [INFO] [transaction-5a945af9-1d42-4b2f-86b5-149d70adddba] Request processed successfully in 24ms
+[2026-08-25T12:32:24.494980921Z] [INFO] [transaction-96a94825-85fe-4eda-9d8f-c1ff26dee5eb] Request processed successfully in 10ms
+[2026-08-25T12:32:24.594980921Z] [INFO] [transaction-c8957866-6a37-40fb-89f7-92816353918f] Request processed successfully in 11ms
+[2026-08-25T12:32:24.694980921Z] [INFO] [transaction-a90cf180-aebc-42a6-b765-034457868a31] Request processed successfully in 12ms
+[2026-08-25T12:32:24.794980921Z] [INFO] [transaction-3cdd395f-0927-486c-b187-3c889486f030] Request processed successfully in 13ms
+[2026-08-25T12:32:24.894980921Z] [INFO] [transaction-bfb7552d-faed-4c17-9b86-477bb48fc9c2] Request processed successfully in 14ms
+[2026-08-25T12:32:24.994980921Z] [INFO] [transaction-e2e7dba6-1334-4e28-bfb6-b45a6e6f01fa] Request processed successfully in 15ms
+[2026-08-25T12:32:25.094980921Z] [INFO] [transaction-32bc7f2d-8217-4ca7-812f-d0c143fc3aec] Request processed successfully in 16ms
+[2026-08-25T12:32:25.194980921Z] [INFO] [transaction-6e0a91cc-cfc1-4907-b57f-435fc0ff8ec9] Request processed successfully in 17ms
+[2026-08-25T12:32:25.294980921Z] [INFO] [transaction-82a6e0b4-2383-41f9-b7bf-ba2a4d3e3aa4] Request processed successfully in 18ms
+[2026-08-25T12:32:25.394980921Z] [INFO] [transaction-6c5f10d0-54be-4cb2-82ff-4ef7e26a091c] Request processed successfully in 19ms
+[2026-08-25T12:32:25.494980921Z] [INFO] [transaction-d9f0b4d5-7913-49bb-986a-ad3fa7bb3192] Request processed successfully in 20ms
+[2026-08-25T12:32:25.594980921Z] [INFO] [transaction-7b37bb25-dde3-4f63-9840-54a71679d7e8] Request processed successfully in 21ms
+[2026-08-25T12:32:25.694980921Z] [INFO] [transaction-9ea15e72-3189-46a8-93af-2ca050f6a29f] Request processed successfully in 22ms
+[2026-08-25T12:32:25.794980921Z] [INFO] [transaction-b489f475-e90f-484f-bfd1-03d72f7e11ac] Request processed successfully in 23ms
+[2026-08-25T12:32:25.894980921Z] [INFO] [transaction-afd8c40b-ad30-4d9f-bcba-ddb6981b347e] Request processed successfully in 24ms
+[2026-08-25T12:32:25.994980921Z] [INFO] [transaction-cb5416a4-d3ee-49e8-91d1-aa2facdd981e] Request processed successfully in 10ms
+[2026-08-25T12:32:26.094980921Z] [INFO] [transaction-94f7aad3-a10e-4d2d-825e-40de6fd903ff] Request processed successfully in 11ms
+[2026-08-25T12:32:26.194980921Z] [INFO] [transaction-403c3618-8255-4a18-880a-f966fe0fb1cd] Request processed successfully in 12ms
+[2026-08-25T12:32:26.294980921Z] [INFO] [transaction-0e779c00-8432-407a-8a27-4a29b6d604c4] Request processed successfully in 13ms
+[2026-08-25T12:32:26.394980921Z] [INFO] [transaction-25818edf-0492-4bb8-93e4-fe60ae2d11b5] Request processed successfully in 14ms
+[2026-08-25T12:32:26.494980921Z] [INFO] [transaction-1adee029-851b-4c6f-849f-c7c146134b5e] Request processed successfully in 15ms
+[2026-08-25T12:32:26.594980921Z] [INFO] [transaction-98863f47-509f-4b2e-93a7-50239cce6600] Request processed successfully in 16ms
+[2026-08-25T12:32:26.694980921Z] [INFO] [transaction-a338340d-1950-42ab-bf43-d6349d3f8d61] Request processed successfully in 17ms
+[2026-08-25T12:32:26.794980921Z] [INFO] [transaction-04de883c-f743-4274-8aa7-6bb45a8f043d] Request processed successfully in 18ms
+[2026-08-25T12:32:26.894980921Z] [INFO] [transaction-3d180ca3-0c24-4f68-bfcc-edcf48f6d35f] Request processed successfully in 19ms
+[2026-08-25T12:32:26.994980921Z] [INFO] [transaction-78eaa621-9cb1-43f6-bb60-c42c0a1efd51] Request processed successfully in 20ms
+[2026-08-25T12:32:27.094980921Z] [INFO] [transaction-27834c5a-405d-483e-87e6-fb81cdf5c910] Request processed successfully in 21ms
+[2026-08-25T12:32:27.194980921Z] [INFO] [transaction-f7f1c157-b6e9-4325-b557-f365dc258a96] Request processed successfully in 22ms
+[2026-08-25T12:32:27.294980921Z] [INFO] [transaction-60f3012e-6862-4810-96cb-01d0a25ad2ad] Request processed successfully in 23ms
+[2026-08-25T12:32:27.394980921Z] [INFO] [transaction-0518f146-e636-4da6-b407-502b7cabb310] Request processed successfully in 24ms
+[2026-08-25T12:32:27.494980921Z] [INFO] [transaction-4600ef38-63ce-4424-8035-9c22d23d895d] Request processed successfully in 10ms
+[2026-08-25T12:32:27.594980921Z] [INFO] [transaction-aacadb8c-5957-419e-a459-181ffea86e40] Request processed successfully in 11ms
+[2026-08-25T12:32:27.694980921Z] [INFO] [transaction-90a2d3ac-91b2-4b67-8382-ed23f3e5ff5e] Request processed successfully in 12ms
+[2026-08-25T12:32:27.794980921Z] [INFO] [transaction-ff775093-d16c-47b1-a68a-e93ba9f9a6b0] Request processed successfully in 13ms
+[2026-08-25T12:32:27.894980921Z] [INFO] [transaction-ef15e8f6-f472-43f2-970d-a947b62e7e81] Request processed successfully in 14ms
+[2026-08-25T12:32:27.994980921Z] [INFO] [transaction-9dae7f0b-9d63-48b2-b654-3aae6e3fa8f5] Request processed successfully in 15ms
+[2026-08-25T12:32:28.094980921Z] [INFO] [transaction-f5d4575b-f249-4bfe-bb18-ed54cd05698b] Request processed successfully in 16ms
+[2026-08-25T12:32:28.194980921Z] [INFO] [transaction-991125db-f35c-450e-99b8-e7d360631c5f] Request processed successfully in 17ms
+[2026-08-25T12:32:28.294980921Z] [INFO] [transaction-cb7571a4-2204-41a1-963a-457d5296ce31] Request processed successfully in 18ms
+[2026-08-25T12:32:28.394980921Z] [INFO] [transaction-d5345496-92be-4f5a-a136-e50be6373f9c] Request processed successfully in 19ms
+[2026-08-25T12:32:28.494980921Z] [INFO] [transaction-1b9e3935-54cf-44c7-9bdf-b055424216d4] Request processed successfully in 20ms
+[2026-08-25T12:32:28.594980921Z] [INFO] [transaction-d6639e81-af62-4038-843d-c9f12c11b4fa] Request processed successfully in 21ms
+[2026-08-25T12:32:28.694980921Z] [INFO] [transaction-773365fe-5564-4e79-8e4c-f468a360baad] Request processed successfully in 22ms
+[2026-08-25T12:32:28.794980921Z] [INFO] [transaction-1c739f70-358e-4cc2-a754-9744d7c9a99b] Request processed successfully in 23ms
+[2026-08-25T12:32:28.894980921Z] [INFO] [transaction-7bbc6d35-80bb-450d-bb16-e2af63054e04] Request processed successfully in 24ms
+[2026-08-25T12:32:28.994980921Z] [INFO] [transaction-0841bfac-876d-4b7e-813e-d7f46e96bc47] Request processed successfully in 10ms
+[2026-08-25T12:32:29.094980921Z] [INFO] [transaction-e83aaacc-80bb-4bab-af38-5327a586b6a4] Request processed successfully in 11ms
+[2026-08-25T12:32:29.194980921Z] [INFO] [transaction-665442b6-2647-4488-bfa2-91ea815b2508] Request processed successfully in 12ms
+[2026-08-25T12:32:29.294980921Z] [INFO] [transaction-6ceeae87-408d-46e1-a12e-27fb685bb17c] Request processed successfully in 13ms
+[2026-08-25T12:32:29.394980921Z] [INFO] [transaction-d84ec78f-8838-4983-9ba6-792024170410] Request processed successfully in 14ms
+[2026-08-25T12:32:29.494980921Z] [INFO] [transaction-6aeded0c-e848-48a7-80eb-a1b2e5657e27] Request processed successfully in 15ms
+[2026-08-25T12:32:29.594980921Z] [INFO] [transaction-fc4ba6e9-a481-4521-b1a3-176a68d81fa1] Request processed successfully in 16ms
+[2026-08-25T12:32:29.694980921Z] [INFO] [transaction-21596a7d-03f3-4486-a02b-26c2118a6b39] Request processed successfully in 17ms
+[2026-08-25T12:32:29.794980921Z] [INFO] [transaction-4c383347-0a09-4aea-b1a0-0e69ca6392f9] Request processed successfully in 18ms
+[2026-08-25T12:32:29.894980921Z] [INFO] [transaction-8f2ba663-ffb9-469c-b4a2-02155c6286fa] Request processed successfully in 19ms
+[2026-08-25T12:32:29.994980921Z] [INFO] [transaction-85acfe62-eca6-4b65-a52e-723ba507924d] Request processed successfully in 20ms
+[2026-08-25T12:32:30.094980921Z] [INFO] [transaction-a984f154-e873-4f52-9ff1-cd8441cf7bf1] Request processed successfully in 21ms
+[2026-08-25T12:32:30.194980921Z] [INFO] [transaction-45c344cc-7f1f-4588-95d5-9aaa1aa78bbb] Request processed successfully in 22ms
+[2026-08-25T12:32:30.294980921Z] [INFO] [transaction-54b0a483-454a-404e-afd4-66761a78ba75] Request processed successfully in 23ms
+[2026-08-25T12:32:30.394980921Z] [INFO] [transaction-b83b30c1-1a9d-4d4e-9577-8be4a4c3fc76] Request processed successfully in 24ms
+[2026-08-25T12:32:30.494980921Z] [INFO] [transaction-142ba8d9-a068-45d2-bada-31c01befed89] Request processed successfully in 10ms
+[2026-08-25T12:32:30.594980921Z] [INFO] [transaction-4c16f520-c775-4ac5-851b-c1054525ba8b] Request processed successfully in 11ms
+[2026-08-25T12:32:30.694980921Z] [INFO] [transaction-7633790f-20a4-45ae-afbf-a8cfd17995d9] Request processed successfully in 12ms
+[2026-08-25T12:32:30.794980921Z] [INFO] [transaction-eecaa46b-dd12-44c3-8b60-d971336bd0e4] Request processed successfully in 13ms
+[2026-08-25T12:32:30.894980921Z] [INFO] [transaction-86c5bb29-44ce-4c6d-b5f7-c1356555fbc7] Request processed successfully in 14ms
+[2026-08-25T12:32:30.994980921Z] [INFO] [transaction-53c80b91-5770-4daf-acca-338a5067e11e] Request processed successfully in 15ms
+[2026-08-25T12:32:31.094980921Z] [INFO] [transaction-b1b5c21b-b3ca-49fa-9033-e8d1a6d76365] Request processed successfully in 16ms
+[2026-08-25T12:32:31.194980921Z] [INFO] [transaction-30772a51-76ca-4313-a035-d4eb7819d7d0] Request processed successfully in 17ms
+[2026-08-25T12:32:31.294980921Z] [INFO] [transaction-4e2553c5-92a4-4b82-a23c-88d768257e0a] Request processed successfully in 18ms
+[2026-08-25T12:32:31.394980921Z] [INFO] [transaction-204f1e41-b67e-4d06-aadf-371fb3155a74] Request processed successfully in 19ms
+[2026-08-25T12:32:31.494980921Z] [INFO] [transaction-d35c4270-0b76-4134-a3f8-723d76561a55] Request processed successfully in 20ms
+[2026-08-25T12:32:31.594980921Z] [INFO] [transaction-e0bcc4e8-7370-483d-badc-8136d5462f67] Request processed successfully in 21ms
+[2026-08-25T12:32:31.694980921Z] [INFO] [transaction-21bcebb2-68b5-4ef0-8d5b-259bee1320a6] Request processed successfully in 22ms
+[2026-08-25T12:32:31.794980921Z] [INFO] [transaction-65fa4cc5-c0c0-4537-9598-2dcfeaf128d8] Request processed successfully in 23ms
+[2026-08-25T12:32:31.894980921Z] [INFO] [transaction-cf33fdc7-fbd3-40a4-a1c3-8dd28d249b9b] Request processed successfully in 24ms
+[2026-08-25T12:32:31.994980921Z] [INFO] [transaction-bb31656f-0820-4cfa-82f7-1b2a1b6b2aed] Request processed successfully in 10ms
+[2026-08-25T12:32:32.094980921Z] [INFO] [transaction-0c6b823c-44a9-4d01-8614-e3831e8b8982] Request processed successfully in 11ms
+[2026-08-25T12:32:32.194980921Z] [INFO] [transaction-c9fd24be-7be4-4c7e-972e-ea41767693a5] Request processed successfully in 12ms
+[2026-08-25T12:32:32.294980921Z] [INFO] [transaction-c3f3ff60-fa27-4046-a878-71b7285f9e15] Request processed successfully in 13ms
+[2026-08-25T12:32:32.394980921Z] [INFO] [transaction-acb69088-45e6-401f-921c-3099843d37b3] Request processed successfully in 14ms
+[2026-08-25T12:32:32.494980921Z] [INFO] [transaction-00d61151-ba05-4798-be4c-e27ab56ae37e] Request processed successfully in 15ms
+[2026-08-25T12:32:32.594980921Z] [INFO] [transaction-c3f7c2ca-35ec-4056-9e11-7f00530736ea] Request processed successfully in 16ms
+[2026-08-25T12:32:32.694980921Z] [INFO] [transaction-65bcb047-6d2c-451e-8383-cf60250b689b] Request processed successfully in 17ms
+[2026-08-25T12:32:32.794980921Z] [INFO] [transaction-a3e36845-947f-4cd5-ae87-c419cdf9a915] Request processed successfully in 18ms
+[2026-08-25T12:32:32.894980921Z] [INFO] [transaction-4c3edb9c-0089-4a38-bab8-9a0048f79d4d] Request processed successfully in 19ms
+[2026-08-25T12:32:32.994980921Z] [INFO] [transaction-115c9412-ef8c-42de-8ef8-b0efeffcb42f] Request processed successfully in 20ms
+[2026-08-25T12:32:33.094980921Z] [INFO] [transaction-6c5cf531-7b16-4604-83c8-1fa1fe4f567b] Request processed successfully in 21ms
+[2026-08-25T12:32:33.194980921Z] [INFO] [transaction-5423b810-7f55-4f68-9a64-26f497cdc447] Request processed successfully in 22ms
+[2026-08-25T12:32:33.294980921Z] [INFO] [transaction-129dfc0a-6762-4cd8-b0a0-b4fe263a8dcb] Request processed successfully in 23ms
+[2026-08-25T12:32:33.394980921Z] [INFO] [transaction-003a9048-0ec1-4fe9-9844-cbc3a30e5a8b] Request processed successfully in 24ms
+[2026-08-25T12:32:33.494980921Z] [INFO] [transaction-62e8a1d4-25ff-4a45-adfb-c9b276bd0e48] Request processed successfully in 10ms
+[2026-08-25T12:32:33.594980921Z] [INFO] [transaction-fb77a78e-eaea-4902-8db2-db1cb41480e2] Request processed successfully in 11ms
+[2026-08-25T12:32:33.694980921Z] [INFO] [transaction-67ab35c1-694f-449c-8943-5bdbc76363cf] Request processed successfully in 12ms
+[2026-08-25T12:32:33.794980921Z] [INFO] [transaction-32e9fc5d-2071-4da2-9dd8-d75a7397dd4e] Request processed successfully in 13ms
+[2026-08-25T12:32:33.894980921Z] [INFO] [transaction-04cf2002-2d51-4d1e-9f77-6fed4cde9496] Request processed successfully in 14ms
+[2026-08-25T12:32:33.994980921Z] [INFO] [transaction-db1cfb7e-6a13-4aea-991f-e789b2079372] Request processed successfully in 15ms
+[2026-08-25T12:32:34.094980921Z] [INFO] [transaction-4dd75679-1ecf-4bd1-833a-d82051580e5d] Request processed successfully in 16ms
+[2026-08-25T12:32:34.194980921Z] [INFO] [transaction-73312a18-181c-4d83-b91d-d537bfbd8743] Request processed successfully in 17ms
+[2026-08-25T12:32:34.294980921Z] [INFO] [transaction-624f3791-5984-4bd9-8306-b5a23c4f42a1] Request processed successfully in 18ms
+[2026-08-25T12:32:34.394980921Z] [INFO] [transaction-eef9e53f-482b-439e-8c59-c1d412202179] Request processed successfully in 19ms
+[2026-08-25T12:32:34.494980921Z] [INFO] [transaction-792f1a03-fdf4-4b3b-b1b6-c55298da862c] Request processed successfully in 20ms
+[2026-08-25T12:32:34.594980921Z] [INFO] [transaction-ba5328e4-4322-4c64-b416-aaafdda08691] Request processed successfully in 21ms
+[2026-08-25T12:32:34.694980921Z] [INFO] [transaction-3a9dfb80-2f8d-4ae9-843b-3577f4378729] Request processed successfully in 22ms
+[2026-08-25T12:32:34.794980921Z] [INFO] [transaction-d4d4e04e-49a2-43ac-88ea-3ccb7ca06529] Request processed successfully in 23ms
+[2026-08-25T12:32:34.894980921Z] [INFO] [transaction-a09a1414-711c-409d-9079-b12b1814b07a] Request processed successfully in 24ms
+[2026-08-25T12:32:34.994980921Z] [INFO] [transaction-f9e0ddb7-75aa-4a3d-8ded-a55e110c4d85] Request processed successfully in 10ms
+[2026-08-25T12:32:35.094980921Z] [INFO] [transaction-97f1c302-172f-4563-8325-ad7c7fe310be] Request processed successfully in 11ms
+[2026-08-25T12:32:35.194980921Z] [INFO] [transaction-c89276ff-51ab-49eb-8aa9-f842232e15c4] Request processed successfully in 12ms
+[2026-08-25T12:32:35.294980921Z] [INFO] [transaction-15a184f7-8d4f-48c6-a890-735b19e03f55] Request processed successfully in 13ms
+[2026-08-25T12:32:35.394980921Z] [INFO] [transaction-d0f9c206-6505-42c0-84ae-7a3cc1b24a1b] Request processed successfully in 14ms
+[2026-08-25T12:32:35.494980921Z] [INFO] [transaction-d38aedcd-efe4-4615-b32b-12f6d08b3dd0] Request processed successfully in 15ms
+[2026-08-25T12:32:40.494980921Z] [WARN] [reactor-http-nio-2] [NettyEventLoop] Thread 'reactor-http-nio-2' has been blocked for 35000ms! (Possible blocking I/O operation on non-blocking thread)
+[2026-08-25T12:32:40.694980921Z] [ERROR] [reactor-http-nio-2] [LogPipeline] Critical Exception in Reactive Stream processing: reactor.blockhound.BlockingOperationError: Blocking call! java.io.FileInputStream.readBytes
+    at reactor.blockhound.BlockHound$Builder.lambda$install$8(BlockHound.java:427)
+    at java.base/java.io.FileInputStream.readBytes(Native Method)
+    at java.base/java.io.FileInputStream.read(FileInputStream.java:287)
+    at pl.blaszak.loginsight.app.FileReader$readFileLines$1.invokeSuspend(FileReader.kt:18)
+[2026-08-25T12:32:40.744980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 14e5cf69-50d3-485d-a5c0-d121d102a1f8: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:40.794980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID f9e9a3c2-6dc7-4daa-931e-d4a4b477358c: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:40.844980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 66caef9d-d8d9-495d-87c9-f2f60641db75: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:40.894980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID c5d22dba-ae88-4f03-a6ff-b5fa2e49a565: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:40.944980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 472213f6-ad1c-4c18-9d8c-50307dcdd671: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:40.994980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 0b0c3b51-c821-47f0-a113-7d2468afd5b6: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.044980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID fb5d0f39-f19c-4fc7-b026-2e2ac7d6c48b: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.094980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a4d5c27a-51bd-4471-b8f5-2a4731896acf: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.144980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 91ab2512-f6f4-49bb-b0de-8850bab024bf: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.194980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3c8b5fe8-0d81-4016-ad7b-d844d04f84df: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.244980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 07c9f0b6-dcea-497b-96de-fa82f47296c4: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.294980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID d7a83ae4-6ef2-4324-bac3-a9b8fd5e10a4: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.344980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID fe68aa8b-43d6-433b-9fc8-a43efce239a6: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.394980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 22098500-f180-41d8-9643-36364ea8e986: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.444980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 65c0812a-bb28-437c-b1a3-90949fb3ab39: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.494980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID f8bba0ee-e9b9-4865-b034-72c50d21e214: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.544980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID eefee950-ffd7-44ac-a9b9-0a9ad6988a71: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.594980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 950ca882-91e2-4164-8bbe-e077af7a2c66: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.644980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 83b49c48-b860-4292-bd98-132323f5e16d: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.694980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID c5922a62-52d6-4e07-8783-6d6ebc9e9e1d: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.744980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ce5addb6-f3df-48bc-829d-ed4d0e080320: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.794980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 4e1ea4bc-509a-4ea2-817f-7c52e8416269: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.844980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 49d113af-dab2-49dd-981a-41edb076a53a: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.894980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ae235aed-ae25-45f1-965b-b65b6323cb14: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.944980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3be0c488-afbb-4904-a47e-abc01ec7d22d: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:41.994980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 8ebe7892-b689-497e-ae94-ead9a900f649: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.044980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b3ca7d59-00b7-48d5-a1d1-08d5529883c1: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.094980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 25426eae-c848-4e8f-a1f9-b767ce5652a3: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.144980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 804d2bf1-126a-49a8-ad9a-dfd455c6b547: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.194980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 9cd5a61a-76e6-4c5c-b423-134c8efecdff: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.244980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 829af2cf-89a0-4c26-b3dc-a17d8c127fdd: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.294980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 7e53b091-f498-436e-a471-3eaa136a02e3: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.344980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID bd88b11f-baa0-43c7-8b3c-0a65b03a68f8: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.394980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID aa9ce408-0b8c-48fe-909f-ad25f589b424: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.444980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a439158f-3a7e-48e1-b578-078073472139: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.494980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID d9d8bbb2-9f8e-43cb-9353-daa17e4e5f5f: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.544980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a3313bc7-ef5c-48da-b862-d6a53f60f820: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.594980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID c0465b06-1440-4431-a69c-88646749da1c: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.644980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b373de98-db5d-4575-b4b4-dbd9f1b3a44b: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.694980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID adc9949d-6e7a-4e1a-adef-a09e2646929e: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.744980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 0265d3c6-cc91-4d2a-8467-39787c8ec742: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.794980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 6ec29c08-50fd-4843-90dd-4bff9da1a53e: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.844980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b1a9ea51-f1c1-4dd6-8d3c-e70e3d9dbb7c: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.894980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID eb6b00cb-5849-4532-b987-da48fe359cf7: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.944980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 15e9feb8-7c8e-4c8b-83ac-59f74acdc3cf: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:42.994980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID d10aefe3-de16-4f57-8703-ab8ff84aeda6: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.044980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 04b5556d-af89-4427-b3b7-29829943504f: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.094980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b7446fc1-1d33-45a4-8a00-825aac4741c3: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.144980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 7eb8ab47-04cb-4cc4-aca2-6905187310f3: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.194980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 38854b21-bbff-4b05-a65f-9433d0b16ef0: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.244980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 5c849990-3213-4305-9b44-deba4e914fcc: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.294980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 0cf28bce-002f-4c7a-99fd-cb043a126098: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.344980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3d9baf31-6fb7-4955-aafb-20d8a7bcea30: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.394980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID c701c356-626a-43df-bcf1-0e8e5b191bfd: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.444980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 28efd209-a1c7-42c8-a924-faf013db8545: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.494980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b5972af9-9f8b-4970-8fdc-f08079709e9b: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.544980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 8cc32be8-fb6f-4a9b-a6ab-6bf7db502738: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.594980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 1d53de26-1954-46eb-af28-7e8541b73631: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.644980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a6c58918-0d5e-4e2e-bfd6-562ca25f168f: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.694980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID e3c70c93-c26b-4fa0-82bc-3362e0640dd1: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.744980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 94964a68-4b62-49b7-8ffd-975eccf9e0d3: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.794980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 4e13796e-48bb-4a32-8918-eab91b81d951: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.844980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 399a7e49-df2b-4c39-a09f-17cff0b60801: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.894980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 14c9f623-dce2-4686-b363-dc1b2c6ecbd2: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.944980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 80eedb08-1c31-4ad6-b1c3-05c17dc9f4dd: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:43.994980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 62b7f961-27f3-4151-9c75-337b3b96119c: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.044980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 58a95b31-58ca-44bc-81c4-4d861acff7ab: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.094980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID e60f061b-5e0a-48f6-8085-2da9a8a3cced: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.144980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 29a44459-4c93-4208-bd14-714e12fddd03: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.194980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID d7bcc183-c030-47a9-b309-1f2e8d75171f: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.244980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ec235d91-a5ce-4824-afe5-6ba3cf69077a: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.294980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b8086fdc-3759-42f0-8827-0fbedb011320: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.344980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b0235103-152b-4068-88a4-52bcaf593eb2: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.394980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3a1c209f-e10c-425b-b946-8a9a969e69d6: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.444980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b2533529-9d5b-487e-ace6-017450e48fd9: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.494980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 41fe9660-25f3-41a4-a24a-a5d173d381f0: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.544980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a9db4d76-0b1a-4bda-a877-72cdf5eb75d1: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.594980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 5351a835-a05b-4b2d-947e-ca569745603b: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.644980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3f0c8b9a-1fad-40c6-8c2d-29564e1180bc: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.694980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 2f127616-d140-443e-9ce4-0b004e1ac16c: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.744980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID df8ac653-bb16-489f-b917-44fc773b3851: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.794980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 6532a0cd-7fcb-48bd-a003-dad30cb7f831: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.844980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3503000b-87b2-49ea-b888-1f97d34ab7d0: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.894980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID e9fef686-231e-478a-b940-6f0c1bc15ec9: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.944980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 609f76d5-a8ea-47ba-9491-80f85c1408b7: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:44.994980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 254d7ac6-e04f-4301-8ccb-2e6d5b4ea9dd: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.044980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b2cf848c-68e1-4baa-87bb-7c5bb54ad12e: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.094980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID af57bdfc-3764-4641-8c40-9a807b45f6d8: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.144980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 6fefad30-f86d-41de-9df0-197e1a624cb3: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.194980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID cd434d83-ca19-41aa-95e2-50dd5a0c8ee0: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.244980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 676e410e-36fc-4cb9-b3fd-257e8ea4e7d8: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.294980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 41357a73-e2fe-4c15-955a-b86f1615fda6: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.344980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 54cf3c07-dea3-4ea6-9e8b-9ebd466d9641: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.394980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 450f4066-5c13-40e2-b741-65ccce72b6fe: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.444980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 60f4af25-ade4-450a-8a36-4caa9bc81ec1: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.494980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ba9a6c46-1ae3-4810-9c1e-66cde28dfa88: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.544980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID f4fd225b-fac2-4f51-a469-ceb12d398fc2: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.594980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 0aee19d4-9671-4d21-a3bf-e3a6a58f2d29: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.644980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b17408c1-28e3-4c74-9293-eeaa53c18272: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.694980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID fa85bbaf-5706-4140-be02-48311ad78354: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.744980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ffe6b35e-a749-4e9b-9327-fefa0c176285: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.794980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID f79f7b0a-3967-4615-91df-278d4db88845: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.844980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 0770d5bc-b869-4419-a260-27afa6fb3370: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.894980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3d3a7f85-28e4-40b1-9513-7963d7b86b03: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.944980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID bc225792-0dad-4fa0-9582-51a1955b1bd5: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:45.994980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID d13577dd-dbb0-46c9-8e6f-48b27d173b3c: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.044980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID dc3e5d0e-1067-4f14-99e7-b9f48c23b551: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.094980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID e8a43dae-9e11-4e95-9846-633e76e52f6e: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.144980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID e08b193a-55ca-448f-bedf-d25d33ae9447: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.194980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3a3987d6-b9ee-4fb1-88e1-ed9b95e36306: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.244980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 7e4def56-9fd2-4542-b727-b35e325931e6: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.294980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 9a4f77cc-cfbc-4da8-8583-486b09ccc9e4: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.344980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 235f33c6-124b-4ed7-8a2e-70c7663e0bbb: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.394980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID be42d00f-597c-40b7-b976-3609aa011a51: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.444980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 2fef78b9-6e43-4298-b3b1-9e7267f9a3ba: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.494980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 25f92853-7e59-46e8-b906-16add038741f: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.544980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a0aca79e-ad90-4410-959b-10b43734fd26: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.594980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3819a3c9-d760-456f-b7c2-a9b04fff9c13: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.644980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ec80c80f-9a36-4704-a1b0-64473136159d: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.694980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID e46c055f-c41f-498f-88c3-1f0ce6bb4579: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.744980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ac0b58f0-4c1c-4be4-a200-9ac454366bcc: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.794980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID f00ed4d5-414b-476a-9bc2-14ae3774925d: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.844980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID f51efe21-6e94-45f2-a74c-87af2451bd0d: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.894980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 98097ffe-1a5e-447d-b742-4ff0746ba82a: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.944980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ec2811aa-b532-4668-a1e4-49074642bee9: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:46.994980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 23a7f8ff-4a65-419d-b61b-f9bb1e3cd306: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.044980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a0a2f7f0-207b-488b-b18a-3de3536b5626: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.094980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 035f2ac1-9ad0-4cfa-8c51-fc913e8f2d39: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.144980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 1f1d7445-4b1f-4eb3-9044-02fc956928e3: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.194980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID d5c25b38-5800-4223-b428-87ac2660986b: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.244980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 1affe9f2-8387-4131-98cc-f8d995667cc8: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.294980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID cd88e95f-3012-447a-88cb-3b19855f70df: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.344980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 238dd3c6-66da-4ac3-8a39-bfa15b247a6f: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.394980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID c9f5cdd8-0dd0-48c2-b017-101fb4d38c21: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.444980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 07d1f6d7-54b2-40c1-9b18-d7a03f0f54e0: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.494980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 7d724c01-c5e5-47a7-9e55-cf929b1ceccf: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.544980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 35e6fdf3-3edf-48e6-b4e9-70ae6446c278: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.594980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 4181ff19-e566-44f6-a0db-d63a6e91e6ab: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.644980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID aac55615-9473-4449-aacd-4a0a5632fe11: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.694980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID c9db79f1-a80f-4614-8a44-c12f8e4c783b: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.744980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 2d4a23ba-948c-48bb-b3ad-454b3d4259b1: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.794980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 54560a44-0023-4209-8f84-90acd25f2e24: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.844980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID fb35a154-44c1-462d-9f42-f1c172269c06: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.894980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b0025f62-3ae5-490d-ad5b-05824a727aa9: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.944980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID e0eef201-c8b6-409e-bd87-e3f27a7bb421: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:47.994980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID c16bc0c0-3af7-4fc9-a5cb-131b457aa7eb: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.044980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a431da20-7d4f-4fb9-bb72-1faa8f6aae37: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.094980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ff015ad0-a65b-45b4-8254-86aa31e11e8e: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.144980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID aa60173d-2c4a-4c25-b69b-19a147ec3d52: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.194980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 40ac99c4-242f-490c-a23f-29977a8c9dcc: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.244980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 206e735c-0526-4952-b3b4-4c04a1fab11f: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.294980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 89597dff-371f-45b0-929b-9100a759f5b8: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.344980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3dc138de-cb29-4a8b-b8c9-02a736998b29: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.394980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 68a2c250-f9c6-4083-af33-d1fa639de651: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.444980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID f3f9ed88-453a-4795-afc8-6e15d5a69441: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.494980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID e7ef352d-3671-4668-a489-5cb0ce1432a9: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.544980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b8c3b176-71f1-4527-9da5-343b446a047f: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.594980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID dd76c04f-77c4-409f-adbd-bd7b6c4e2de4: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.644980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 12fac0e7-ca0a-43fa-b5d8-93ca32249420: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.694980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b53a2321-0c17-4b72-a4fc-a4ae4a8abe8f: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.744980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 93e24a2f-8f32-4aa5-bb89-5fca30dddbb7: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.794980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID f706f462-699d-43d9-9264-3cd0749a2281: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.844980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID deb88959-7477-439f-b98b-7e86f7021c48: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.894980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID fee38b31-2847-4b71-8104-e5f855f303cf: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.944980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ed8dacbd-610a-4485-a93d-ac396b9a96b3: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:48.994980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID d97c67b9-6c89-4a57-890e-0dd91533e688: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.044980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 8be36189-122d-4922-878b-c26a2b645507: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.094980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a7707414-7549-4bfb-aa77-6caf69d16838: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.144980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b87f54ee-1e3c-4bd3-9221-3e4927aef6fe: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.194980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 1f4e7c66-004f-405a-b1fc-c9aec31344ee: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.244980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID dabb720d-af10-4540-a5c2-6759d52507ef: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.294980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID f8c4223c-3a19-4bb7-a929-754291b53995: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.344980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 13906ef0-c0d8-4ea0-bae5-a251dcd88196: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.394980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 928228a3-57bc-4c9a-9ab3-cb04461b1c57: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.444980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 0f2e5948-0805-4627-94fa-7f853c1102bb: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.494980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 35cb6706-6d9b-4328-9cc4-d16150b560a7: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.544980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 4323320f-fd5d-4275-8a9d-787b01eb5089: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.594980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID d9a8cb66-646f-4385-b557-ab8bf32a625c: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.644980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b9bc51fd-b333-4edb-8224-413143b6b627: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.694980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 0a05dde9-19ca-4ef9-99bd-505db520f6b6: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.744980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 491e8d5e-d596-4636-8e60-63a55d719a0a: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.794980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID d22faa97-dbd8-431a-b33e-065e5a574e0b: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.844980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID e9d8dbb1-4db3-4eff-a39b-c6ebe9913387: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.894980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a374d3f8-fe81-4181-80da-9b7b0af36bc5: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.944980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID bec05454-0665-47b3-8881-2e97f399f95c: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:49.994980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 2e2a5564-a070-49d2-9a39-b04d5f0d8ff5: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.044980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID c40ba66f-196c-4999-9cfa-c0b7c53e3f71: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.094980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID a5bd6b32-eb52-498e-be3f-f96ea310caaa: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.144980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 2d7abdf5-6979-4d58-b0c7-3d7797176c5f: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.194980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 2e90b384-bf42-4f4b-ab39-c924f58672ee: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.244980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID b01603fa-c6d8-4175-aa48-57c08ec19276: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.294980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 023a5a7d-fe1b-43ab-af15-72c0d7f73d16: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.344980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 76053241-f759-4cdd-82b7-264ed5080c1d: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.394980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 4c6f0e1b-d818-4593-816a-d341e96b666e: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.444980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID addc0649-3af8-4ff2-8494-86e8b0d5103b: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.494980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID d0bc95c1-dea5-466e-9082-38bfba4ac849: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.544980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 3f9c88e3-e304-46e4-900e-bf2987a23afd: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.594980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 6740c134-1e13-4e80-a3a7-95caab572a61: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.644980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID ab263f99-d2cf-4d9d-bf1b-e2db75c14602: Connection timed out to gateway api.gateway.com/v1/settle
+[2026-08-25T12:32:50.694980921Z] [ERROR] [payment-worker] [PaymentGateway] Failed to settle transaction with ID 1c54a55f-d759-42ec-bfab-810f87138a99: Connection timed out to gateway api.gateway.com/v1/settle

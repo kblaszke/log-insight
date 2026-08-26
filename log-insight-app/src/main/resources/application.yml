@@ -1,6 +1,8 @@
 spring:
     application:
         name: log-insight-app
+    profiles:
+      default: webflux
     main:
       banner-mode: off
       log-startup-info: false

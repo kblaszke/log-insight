@@ -5,8 +5,10 @@ import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.collections.shouldContain
 import io.modelcontextprotocol.kotlin.sdk.server.Server
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@ActiveProfiles("mcp")
 class McpLogStatsSpec(
     private val mcpServer: Server
 ) : FunSpec() {

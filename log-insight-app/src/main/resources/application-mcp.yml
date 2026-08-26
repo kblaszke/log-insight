@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: mcp
+  main:
+    web-application-type: reactive
+  ai:
+    mcp:
+      server:
+        stdio: true
+        name: log-insight
+        version: 1.0.0
+server:
+  port: 0
+
+

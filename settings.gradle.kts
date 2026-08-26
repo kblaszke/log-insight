@@ -18,3 +18,5 @@ dependencyResolutionManagement {
 		mavenLocal()
 	}
 }
+
+include("logs")

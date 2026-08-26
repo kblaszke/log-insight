@@ -1,0 +1,11 @@
+spring:
+  config:
+    activate:
+      on-profile: webflux
+  main:
+    web-application-type: reactive
+  ai:
+    mcp:
+      server:
+        stdio: false
+
