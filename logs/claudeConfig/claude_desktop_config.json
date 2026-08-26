@@ -1,0 +1,62 @@
+{
+  "coworkUserFilesPath": "/home/kblaszke/Claude",
+  "preferences": {
+    "launchPreviewPersistedWorkspaces": [],
+    "launchPreviewSessionScopedSessions": [],
+    "coworkScheduledTasksEnabled": false,
+    "coworkHipaaRestricted": false,
+    "ccdScheduledTasksEnabled": false,
+    "bypassPermissionsGateByAccount": {
+      "9bc93d86-e805-4577-bcc8-98c102cdce33": false
+    },
+    "coworkWebSearchEnabled": true,
+    "coworkModelAutoFallbackByAccount": {
+      "9bc93d86-e805-4577-bcc8-98c102cdce33": true
+    },
+    "remoteToolsDeviceName": "charlotte",
+    "epitaxyPrefs": {
+      "desktop-frame.paneStore.v1": {
+        "state": {
+          "extraPanesByMode": {},
+          "colWeightsByMode": {},
+          "rowSplit": 0.5,
+          "draftNonce": 0
+        },
+        "version": 4
+      },
+      "ccd-sessions-filter": {
+        "state": {
+          "selectedProjects": []
+        },
+        "version": 0
+      },
+      "starred-local-code-sessions": [],
+      "starred-cowork-spaces": [],
+      "starred-session-groups": [],
+      "dframe-group-scopes": {},
+      "dframe-local-slice": {
+        "pinnedOrder": [],
+        "homeProjectsPinnedOrder": []
+              }
+            }
+          },
+  "mcpServers": {
+    "log-insight": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/home/kblaszke/IdeaProjects/log-insight/log-insight-app/build/libs/log-insight-app.jar",
+	"--spring.profiles.active=mcp",
+        "--log-insight.mcp.target-file-path=/home/kblaszke/IdeaProjects/log-insight/logs/app.log"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/kblaszke/IdeaProjects/log-insight"
+      ]
+    }
+  }
+}
